@@ -1,8 +1,10 @@
 ﻿1.Założenia i funkcje 
-Aplikacja ma za zadanie ułatwienie pracy recepcjonistom pracującym w salonach branży beauty ze szczególnym uwzględnieniem branży kosmetologicznej. Jej funkcja obejmować będzie: 
+Aplikacja ma za zadanie ułatwienie pracy recepcjonistom pracującym w salonach branży beauty ze szczególnym uwzględnieniem 
+branży kosmetologicznej. Jej funkcja obejmować będzie: 
 * dodanie i usunięcie pacjenta do bazy klientów oraz edycja jego danych,
 * zarządzanie ofertą zabiegową - wprowadzenie zabiegów oraz ich usuwanie z oferty,
-* możliwość pełnej rejestracji wizyty - wyboru daty i godziny jako propozycji realizacji usługi uwzględniając już zarezerwowane terminy przez innych klientów, wyboru klienta oraz zabiegu.
+* możliwość pełnej rejestracji wizyty - wyboru daty i godziny jako propozycji realizacji usługi uwzględniając
+ już zarezerwowane terminy przez innych klientów, wyboru klienta oraz zabiegu.
 * możliwość zmiany lub usunięcia terminu zamówionej usługi 
 
 
