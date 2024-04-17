@@ -13,14 +13,67 @@
         flex-direction: row;
         justify-content: center;
       }
+      .buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+      button {
+        margin: 5px;
+        font-size: large;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+      }
+      table, th, td {
+        border: 1px solid black;
+        padding: 3px;
+        border-collapse: collapse;
+      }
+      .srodek {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
     </style>
   </head>
   <body>
     <header>
-      <h1 class="wysrodkuj">Aplikacja wielowarstwowa</h1>
+      <h1 class="">Aplikacja wielowarstwowa</h1>
     </header>
     <main>
-
+      <section id="menu_glowne" hidden>
+        <div class="buttons">
+          <button type="button">PACJENCI</button> 
+          <button type="button">ZABIEGI</button>
+          <button type="button">KALENDARZ</button>
+        </div>
+      </section>
+      <section class="srodek" id="pacjenci">
+        <h2 class="wysrodkuj" style="color: violet;">REJESTR PACJENTÓW</h2>
+        <table>
+          <tr>
+            <th>Imie</th>
+            <th>Nazwisko</th>
+            <th>tel</th>
+          </tr>
+          <tr>
+            <td>Wojciech</td>
+            <td>Olejarz</td>
+            <td>23232323</td>
+          </tr>
+          <tr>
+            <td>Magdalena</td>
+            <td>Goszkowska</td>
+            <td>3343434</td>
+          </tr>
+        </table>
+      </section>
+      <section id="zabiegi" hidden>
+        <h2>REJESTR ZABIEGÓW</h2>
+      </section>
+      <section id="kalendarz" hidden>
+        <h2>KALENDARZ ZABIEGÓW</h2>
+      </section>
     </main>
     <footer class="wysrodkuj">
       <h3>Autorzy</h3>
