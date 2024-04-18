@@ -89,5 +89,31 @@
     <script>
       window.addEventListener("load", () => 
       { 
+        const button_pacjenci=document.querySelector("#btn_pacjenci");
+        button_pacjenci.addEventListener("click",()=>{
+          const pierwsza_sekcja=document.querySelector("#menu_glowne");
+          pierwsza_sekcja.hidden=true;
+          const druga_sekcja=document.querySelector("#pacjenci");
+          druga_sekcja.hidden=false;
+        });
+        const button_zabiegi=document.querySelector("#btn_zabiegi");
+        button_zabiegi.addEventListener("click",()=>{
+          const pierwsza_sekcja=document.querySelector("#menu_glowne");
+          pierwsza_sekcja.hidden=true;
+          const trzecia_sekcja=document.querySelector("#zabiegi");
+          trzecia_sekcja.hidden=false;
+        });
+        const button_kalendarz=document.querySelector("#btn_kalendarz");
+        button_kalendarz.addEventListener("click",()=>{
+          const pierwsza_sekcja=document.querySelector("#menu_glowne");
+          pierwsza_sekcja.hidden=true;
+          const czwarta_sekcja=document.querySelector("#kalendarz");
+          czwarta_sekcja.hidden=false;
+        });
+        
+        // znajdz button zabiegi i podłącz program przełącający na panel zabiegi
+        // znajdz button pacjenci i podlacz program przełacsaaj na panel pacjenci 
+        // ... kalendrz
+      })
   </body>
 </html>
