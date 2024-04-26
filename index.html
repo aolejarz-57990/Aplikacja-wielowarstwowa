@@ -170,8 +170,23 @@
 
       function wyswietlListePacjentow() {
         const tabelaPacjentow = document.querySelector("#pacjenci tbody");
-        const templateWiersz = document.querySelector("#wiersz_pacjenci tr");
+        const templateWiersz = document.querySelector("#wiersz_pacjenci").content;
+        danePacjentów.forEach(pacjent => {
+            const templateTR = templateWiersz.querySelector("tr");
+            const wiersz = templateWiersz.cloneNode(true);
+            const komorki =wiersz.querySelectorAll("td span");
+            komorki[0].textContent = pacjent.Imie;
+            komorki[1].textContent = pacjent.Nazwisko;
+            komorki[2].textContent = pacjent.Tel;
+            wiersz.querySelector("tr").addEventListener("click", ev => {
+              wyswietlSzczegolyPacjenta(pacjent)
+            })
+            tabelaPacjentow.appendChild(wiersz);
+          }
+        )
+
       }
+
     </script>
   </body>
 </html>
