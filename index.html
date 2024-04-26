@@ -162,10 +162,12 @@
           alert("Zapisano");
         });
         document.querySelector("#btn_usun_pacjenci").addEventListener("click",()=>{
+          if (confirm("Czy na pewno chcesz usunąć pacjenta?")){
             danePacjentow=danePacjentow.filter(pacjent=>pacjent.id!=aktualnyPacjent.id);
             wypelnijListePacjentow();
             document.querySelector("#pacjenci").hidden=false;
             document.querySelector("#szczegoly").hidden=true;
+          }
         });
         document.querySelector("#btn_powrot_pacjenci").addEventListener("click",()=>{
           document.querySelector("#pacjenci").hidden=false;
