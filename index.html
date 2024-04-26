@@ -132,26 +132,26 @@
           const czwarta_sekcja=document.querySelector("#kalendarz");
           czwarta_sekcja.hidden=false;
         });
-        const wiersz1=document.querySelector("#wiersz1");
-        wiersz1.addEventListener("click",()=>{
-          const druga_sekcja=document.querySelector("#pacjenci");
-          druga_sekcja.hidden=true;
-          const piata_sekcja=document.querySelector("#szczegoly");
-          piata_sekcja.hidden=false;
-          document.querySelector("#szczegoly_imie").value="Wojciech";
-          document.querySelector("#szczegoly_nazwisko").value="Olejarz";
-          document.querySelector("#szczegoly_telefon").value="23232323";
-        });
-        const wiersz2=document.querySelector("#wiersz2");
-        wiersz2.addEventListener("click",()=>{
-          const druga_sekcja=document.querySelector("#pacjenci");
-          druga_sekcja.hidden=true;
-          const piata_sekcja=document.querySelector("#szczegoly");
-          piata_sekcja.hidden=false;
-          document.querySelector("#szczegoly_imie").value="Magdalena";
-          document.querySelector("#szczegoly_nazwisko").value="Goszkowska";
-          document.querySelector("#szczegoly_telefon").value="3343434";
-        });
+        // const wiersz1=document.querySelector("#wiersz1");
+        // wiersz1.addEventListener("click",()=>{
+        //   const druga_sekcja=document.querySelector("#pacjenci");
+        //   druga_sekcja.hidden=true;
+        //   const piata_sekcja=document.querySelector("#szczegoly");
+        //   piata_sekcja.hidden=false;
+        //   document.querySelector("#szczegoly_imie").value="Wojciech";
+        //   document.querySelector("#szczegoly_nazwisko").value="Olejarz";
+        //   document.querySelector("#szczegoly_telefon").value="23232323";
+        // });
+        // const wiersz2=document.querySelector("#wiersz2");
+        // wiersz2.addEventListener("click",()=>{
+        //   const druga_sekcja=document.querySelector("#pacjenci");
+        //   druga_sekcja.hidden=true;
+        //   const piata_sekcja=document.querySelector("#szczegoly");
+        //   piata_sekcja.hidden=false;
+        //   document.querySelector("#szczegoly_imie").value="Magdalena";
+        //   document.querySelector("#szczegoly_nazwisko").value="Goszkowska";
+        //   document.querySelector("#szczegoly_telefon").value="3343434";
+        // });
         document.querySelector("#btn_zapisz_pacjenci").addEventListener("click",()=>{
           alert("Zapisano");
         });
