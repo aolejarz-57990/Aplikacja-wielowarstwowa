@@ -123,14 +123,6 @@
           const druga_sekcja=document.querySelector("#pacjenci");
           druga_sekcja.hidden=false;
         });
-        button_pacjenci.addEventListener("mouseenter",()=>{
-          let classes = button_pacjenci.classList;
-          classes.add("zielony");
-        });
-        button_pacjenci.addEventListener("mouseleave",()=>{
-          let classes = button_pacjenci.classList;
-          classes.remove("zielony");
-        });
         const button_zabiegi=document.querySelector("#btn_zabiegi");
         button_zabiegi.addEventListener("click",()=>{
           const pierwsza_sekcja=document.querySelector("#menu_glowne");
