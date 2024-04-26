@@ -195,10 +195,19 @@
       }
 
       function wyswietlSzczegolyPacjenta(pacjent) {
-        alert(`wyswietlono szczegoły pacjenta ${pacjent.Imie} ${pacjent.Nazwisko}`)
+        aktualnyPacjent = pacjent;
+        const szczegolyImie = document.querySelector("#szczegoly_imie");
+        szczegolyImie.value = pacjent.Imie;
+        const szczegolyNazwisko = document.querySelector("#szczegoly_nazwisko");
+        szczegolyNazwisko.value = pacjent.Nazwisko;
+        const szczegolyTelefon = document.querySelector("#szczegoly_telefon");
+        szczegolyTelefon.value = pacjent.Tel;
+        const sekcjaPacjenci = document.querySelector("#pacjenci");
+        sekcjaPacjenci.hidden = true;
+        const sekcjaSzczegoly = document.querySelector("#szczegoly");
+        sekcjaSzczegoly.hidden = false;
       }
 
-      const danePacjentów = [
         { "id": "1",
           "Imie": "Wojciech",
           "Nazwisko": "Olejarz",
