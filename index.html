@@ -112,6 +112,7 @@
       { 
         const button_pacjenci=document.querySelector("#btn_pacjenci");
         button_pacjenci.addEventListener("click",()=>{
+          wyswietlListePacjentow();
           const pierwsza_sekcja=document.querySelector("#menu_glowne");
           pierwsza_sekcja.hidden=true;
           const druga_sekcja=document.querySelector("#pacjenci");
@@ -119,7 +120,6 @@
         });
         const button_zabiegi=document.querySelector("#btn_zabiegi");
         button_zabiegi.addEventListener("click",()=>{
-          wyswietlListePacjentow();
           const pierwsza_sekcja=document.querySelector("#menu_glowne");
           pierwsza_sekcja.hidden=true;
           const trzecia_sekcja=document.querySelector("#zabiegi");
@@ -190,6 +190,29 @@
       function wyswietlSzczegolyPacjenta(pacjent) {
         alert(`wyswietlono szczegoły pacjenta ${pacjent.Imie} ${pacjent.Nazwisko}`)
       }
+
+      const danePacjentów = [
+        { "id": "1",
+          "Imie": "Wojciech",
+          "Nazwisko": "Olejarz",
+          "Tel": "121223"},
+         {"id": "2",
+          "Imie": "Magdalena",
+         "Nazwisko": "Goszkowska",
+         "Tel": "45093409"},
+         {"id": "3",
+          "Imie": "Aleksandra",
+         "Nazwisko": "Olejarz",
+         "Tel": "7054094"},
+         {"id": "4",
+          "Imie": "Zbigniew",
+         "Nazwisko": "Jabłoński",
+         "Tel": "09845809"},
+         {"id": "5",
+          "Imie": "Beata",
+         "Nazwisko": "Olejarz",
+         "Tel": "094580934"},
+      ]
     </script>
   </body>
 </html>
