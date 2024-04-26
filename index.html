@@ -61,21 +61,15 @@
         <div class="srodek">
           <h2 class="wysrodkuj">REJESTR PACJENTÓW</h2>
           <table>
-            <tr>
+            <thead>
+              <tr>
               <th>Imie</th>
               <th>Nazwisko</th>
               <th>Nr tel.</th>
             </tr>
-            <tr id="wiersz1">
-              <td>Wojciech</td>
-              <td>Olejarz</td>
-              <td>23232323</td>
-            </tr>
-            <tr id="wiersz2">
-              <td>Magdalena</td>
-              <td>Goszkowska</td>
-              <td>3343434</td>
-            </tr>
+            </thead>
+            <tbody>
+            </tbody>
           </table>
       </div>
       </section>
@@ -125,6 +119,7 @@
         });
         const button_zabiegi=document.querySelector("#btn_zabiegi");
         button_zabiegi.addEventListener("click",()=>{
+          wyswietlListePacjentow();
           const pierwsza_sekcja=document.querySelector("#menu_glowne");
           pierwsza_sekcja.hidden=true;
           const trzecia_sekcja=document.querySelector("#zabiegi");
@@ -172,6 +167,10 @@
         // znajdz button pacjenci i podlacz program przełacsaaj na panel pacjenci 
         // ... kalendrz
       })
+
+      function wyswietlListePacjentow() {
+        const tabelaPacjentow = document.querySelector("#")
+      }
     </script>
   </body>
 </html>
