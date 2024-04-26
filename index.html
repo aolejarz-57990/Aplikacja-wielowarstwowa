@@ -113,15 +113,16 @@
       </ul>
     </footer>
     <script>
+      let aktualnyPacjent = null;
       window.addEventListener("load", () => 
       { 
         const button_pacjenci=document.querySelector("#btn_pacjenci");
         button_pacjenci.addEventListener("click",()=>{
-          wyswietlListePacjentow();
           const pierwsza_sekcja=document.querySelector("#menu_glowne");
           pierwsza_sekcja.hidden=true;
           const druga_sekcja=document.querySelector("#pacjenci");
           druga_sekcja.hidden=false;
+          wypelnijListePacjentow();
         });
         const button_zabiegi=document.querySelector("#btn_zabiegi");
         button_zabiegi.addEventListener("click",()=>{
@@ -173,13 +174,14 @@
         // ... kalendrz
       })
 
-      function wyswietlListePacjentow() {
+      function wypelnijListePacjentow() {
         const tabelaPacjentow = document.querySelector("#pacjenci tbody");
+        tabelaPacjentow.innerHTML = "";
         const templateWiersz = document.querySelector("#wiersz_pacjenci").content;
-        danePacjentów.forEach(pacjent => {
+        danePacjentow.forEach(pacjent => {
             const templateTR = templateWiersz.querySelector("tr");
             const wiersz = templateWiersz.cloneNode(true);
-            const komorki =wiersz.querySelectorAll("td span");
+            const komorki = wiersz.querySelectorAll("td span");
             komorki[0].textContent = pacjent.Imie;
             komorki[1].textContent = pacjent.Nazwisko;
             komorki[2].textContent = pacjent.Tel;
