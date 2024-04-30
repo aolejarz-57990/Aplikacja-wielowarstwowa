@@ -45,6 +45,7 @@
         <td><span></span></td>
       </tr>
     </template>
+    <template id="wiersz_zabiegi">
       <tr>
         <td><span></span></td>
         <td><span></span></td>
@@ -114,9 +115,25 @@
           <div>Telefon</div>
           <input id="szczegoly_telefon" type="text">
           <div>
-            <button id="btn_zapisz_pacjenci" type="button">Zapisz</button>
-            <button id="btn_usun_pacjenci" type="button">Usuń</button>
-            <button id="btn_powrot_pacjenci" type="button">Powrót</button>
+            <button id="btn_zapisz_klienci" type="button">Zapisz</button>
+            <button id="btn_usun_klienci" type="button">Usuń</button>
+            <button id="btn_powrot_klienci" type="button">Powrót</button>
+          </div>
+        </div>
+      </section>
+      <section id="zabieg_szczegoly" hidden>
+        <div>
+          <h2 class="wysrodkuj">Szczegóły</h2>
+          <div>Nazwa</div>
+          <input id="szczegoly_nazwa" type="text">
+          <div>Czasochłonność</div>
+          <input id="szczegoly_czas" type="number">
+          <div>Opis</div>
+          <input id="szczegoly_opis" type="textarea">
+          <div>
+            <button id="btn_zapisz_zabiegi" type="button">Zapisz</button>
+            <button id="btn_usun_zabiegi" type="button">Usuń</button>
+            <button id="btn_powrot_zabiegi" type="button">Powrót</button>
           </div>
         </div>
       </section>
@@ -136,9 +153,11 @@
     <script src="zarzadzanie_danymi.js"></script>
     <script>
       let aktualnyPacjent = null;
+      let aktualnyZabieg = null;
       window.addEventListener("load", () => 
       { 
         initializujStrone();
+
       })
     </script>
   </body>
