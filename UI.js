@@ -95,7 +95,29 @@ function wypelnijListePacjentow() {
      "Tel": "094580934"},
   ]
 
-  const sekcje = ["menu_glowne","pacjenci","zabiegi","kalendarz","klient_szczegoly"]
+  let daneZabiegow = [
+    { "id": "1",
+      "Nazwa": "Zabieg1",
+      "Czasochlonnosc": "30",
+      "Opis": "Opis zabiegu1"},
+     {"id": "2",
+      "Nazwa": "Zabieg2",
+      "Czasochlonnosc": "40",
+      "Opis": "Opis zabiegu2"},
+     {"id": "3",
+      "Nazwa": "Zabieg3",
+     "Czasochlonnosc": "120",
+      "Opis": "Opis zabiegu3"},
+     {"id": "4",
+      "Nazwa": "Zabieg4",
+     "Czasochlonnosc": "15",
+      "Opis": "Opis zabiegu4"},
+     {"id": "5",
+      "Nazwa": "Zabieg5",
+     "Czasochlonnosc": "60",
+      "Opis": "Opis zabiegu5"},
+  ]
+  const sekcje = ["menu_glowne","klienci","zabiegi","kalendarz","klient_szczegoly","zabieg_szczegoly"]
 
   function przelaczStrone(strona) {
     sekcje.forEach(sekcja => {
