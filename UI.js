@@ -26,12 +26,12 @@ function initializujStrone() {
             danePacjentow=danePacjentow.filter(pacjent=>pacjent.id!=aktualnyPacjent.id);
             wypelnijListePacjentow();
             document.querySelector("#pacjenci").hidden=false;
-            document.querySelector("#szczegoly").hidden=true;
+            document.querySelector("#klient_szczegoly").hidden=true;
         }
     });
     document.querySelector("#btn_powrot_pacjenci").addEventListener("click",()=>{
         document.querySelector("#pacjenci").hidden=false;
-        document.querySelector("#szczegoly").hidden=true;
+        document.querySelector("#klient_szczegoly").hidden=true;
     });
 }
       
@@ -65,7 +65,7 @@ function wypelnijListePacjentow() {
     szczegolyTelefon.value = pacjent.Tel;
     const sekcjaPacjenci = document.querySelector("#pacjenci");
     sekcjaPacjenci.hidden = true;
-    const sekcjaSzczegoly = document.querySelector("#szczegoly");
+    const sekcjaSzczegoly = document.querySelector("#klient_szczegoly");
     sekcjaSzczegoly.hidden = false;
   }
 
@@ -91,4 +91,18 @@ function wypelnijListePacjentow() {
      "Nazwisko": "Olejarz",
      "Tel": "094580934"},
   ]
+
+  const sekcje = ["menu_glowne","pacjenci","zabiegi","kalendarz","klient_szczegoly"]
+
+  function przelaczStrone(strona) {
+    sekcje.forEach(sekcja => {
+        if(sekcja===strona) {
+            document.querySelector(`#${sekcja}`).hidden=false;
+        }
+        else {
+            document.querySelector(`#${sekcja}`).hidden=true;
+        }
+    })
+
+  }
          
