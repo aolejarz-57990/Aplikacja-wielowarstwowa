@@ -1,22 +1,13 @@
 function initializujStrone() {
     document.querySelector("#btn_pacjenci").addEventListener("click",()=>{
-        const pierwsza_sekcja=document.querySelector("#menu_glowne");
-        pierwsza_sekcja.hidden=true;
-        const druga_sekcja=document.querySelector("#pacjenci");
-        druga_sekcja.hidden=false;
+        przelaczStrone("pacjenci");
         wypelnijListePacjentow();
     });
     document.querySelector("#btn_zabiegi").addEventListener("click",()=>{
-        const pierwsza_sekcja=document.querySelector("#menu_glowne");
-        pierwsza_sekcja.hidden=true;
-        const trzecia_sekcja=document.querySelector("#zabiegi");
-        trzecia_sekcja.hidden=false;
+        przelaczStrone("zabiegi");
     });
     document.querySelector("#btn_kalendarz").addEventListener("click",()=>{
-        const pierwsza_sekcja=document.querySelector("#menu_glowne");
-        pierwsza_sekcja.hidden=true;
-        const czwarta_sekcja=document.querySelector("#kalendarz");
-        czwarta_sekcja.hidden=false;
+       przelaczStrone("kalendarz")
     });
     document.querySelector("#btn_zapisz_pacjenci").addEventListener("click",()=>{
         alert("Zapisano");
@@ -25,13 +16,11 @@ function initializujStrone() {
         if (confirm("Czy na pewno chcesz usunąć pacjenta?")){
             danePacjentow=danePacjentow.filter(pacjent=>pacjent.id!=aktualnyPacjent.id);
             wypelnijListePacjentow();
-            document.querySelector("#pacjenci").hidden=false;
-            document.querySelector("#klient_szczegoly").hidden=true;
+            przelaczStrone("klient_szczegoly");
         }
     });
     document.querySelector("#btn_powrot_pacjenci").addEventListener("click",()=>{
-        document.querySelector("#pacjenci").hidden=false;
-        document.querySelector("#klient_szczegoly").hidden=true;
+        przelaczStrone("pacjenci");
     });
 }
       
