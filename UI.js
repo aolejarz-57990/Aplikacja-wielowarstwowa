@@ -72,7 +72,40 @@ function wypelnijListePacjentow() {
     sekcjaSzczegoly.hidden = false;
   }
 
-  let danePacjentow = [
+  function wypelnijListeZabiegow() {
+    const tabelaZabiegow = document.querySelector("#zabiegi tbody");
+    tabelaZabiegow.innerHTML = "";
+    const templateWiersz = document.querySelector("#wiersz_zabiegi").content;
+    daneZabiegow.forEach(zabieg => {
+        const templateTR = templateWiersz.querySelector("tr");
+        const wiersz = templateWiersz.cloneNode(true);
+        const komorki = wiersz.querySelectorAll("td span");
+        komorki[0].textContent = zabieg.Nazwa;
+        komorki[1].textContent = zabieg.Czasochlonnosc;
+        komorki[2].textContent = zabieg.Opis;
+        wiersz.querySelector("tr").addEventListener("click", ev => {
+          wyswietlSzczegolyZabiegu(zabieg)
+        })
+        tabelaZabiegow.appendChild(wiersz);
+      }
+    )
+  }
+
+  function wyswietlSzczegolyZabiegu(zabieg) {
+    aktualnyZabieg = zabieg;
+    const szczegolyNazwa = document.querySelector("#szczegoly_nazwa");
+    szczegolyNazwa.value = zabieg.Nazwa;
+    const szczegolyCzasochlonnosc = document.querySelector("#szczegoly_czas");
+    szczegolyCzasochlonnosc.value = zabieg.Czasochlonnosc;
+    const szczegolyOpis = document.querySelector("#szczegoly_opis");
+    szczegolyOpis.value = zabieg.Opis;
+    const sekcjaZabiegi = document.querySelector("#zabiegi");
+    sekcjaZabiegi.hidden = true;
+    const sekcjaSzczegoly = document.querySelector("#zabieg_szczegoly");
+    sekcjaSzczegoly.hidden = false;
+  }
+
+  let daneKlientów = [
     { "id": "1",
       "Imie": "Wojciech",
       "Nazwisko": "Olejarz",
@@ -119,8 +152,8 @@ function wypelnijListePacjentow() {
   ]
   const sekcje = ["menu_glowne","klienci","zabiegi","kalendarz","klient_szczegoly","zabieg_szczegoly"]
 
-  function przelaczStrone(strona) {
-    sekcje.forEach(sekcja => {
+  function przelaczStrone(strona) { 
+    sekcje.forEach(sekcja => { 
         if(sekcja===strona) {
             document.querySelector(`#${sekcja}`).hidden=false;
         }
