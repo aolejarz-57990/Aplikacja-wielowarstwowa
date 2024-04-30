@@ -64,6 +64,6 @@ class Zabieg {
 class Zamowienia {
     id;
     idKlienta;
-    idZamowienia;
+    idZabiegu;
     Termin = "";
 }
