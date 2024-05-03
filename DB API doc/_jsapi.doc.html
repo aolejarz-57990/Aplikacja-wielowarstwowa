@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)https://aplikacja-ac0d.restdb.io/rest/_jsapi.doc -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<link href="./_jsapi.doc_files/bootstrap.min.css" rel="stylesheet">
+	<link href="./_jsapi.doc_files/prism.css" rel="stylesheet">
+	<script src="./_jsapi.doc_files/clipboard.min.js"></script>
+	<script src="./_jsapi.doc_files/prism.js"></script>
+	<style type="text/css">
+		.proptable {
+			width: auto !important;
+			font-size: 100%;
+		}
+
+		.examplecode {
+			font-size: 80%;
+		}
+	</style>
+</head>
+
+<body>
+	<a name="top"></a>
+	<div class="container-fluid">
+		<h1>aplikacja-ac0d
+			<small>docs</small>
+			<small class="pull-right hidden-xs">JavaScript API for restdb.io</small>
+		</h1>
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				Database API setup
+			</div>
+			<div class="panel-body">
+				<h4>Include your JavaScript API library in a web page</h4>
+				<pre class="language-html code-toolbar"><code class=" language-html"><span class="token comment" spellcheck="true">&lt;!-- First JQuery, Bootstrap, etc, ... --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://aplikacja-ac0d.restdb.io/rest/_jsapi.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+...</code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+				<br>
+				<h4>Create a new database api connection</h4>
+				<p>Note that this requires
+					<a href="https://restdb.io/docs/apikeys-and-cors">web enabled API-key</a> or a valid JWT token (options.jwt must be set as true). Also note that access restrictions (method,
+					path, events) could prevent this connection from receiving or sending data.
+				</p>
+				<pre class="language-js code-toolbar"><code class=" language-js"><span class="token keyword">var</span> db <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">restdb</span><span class="token punctuation">(</span><span class="token string">"your-apikey-here | jwt token"</span><span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+				<p>
+					</p><dl>
+						<dt>Options</dt>
+						<dd>
+							<ul class="list-unstyled">
+								<li>url: override database url, e.g. if using a proxy</li>
+								<li>logging: bool (default false)</li>
+								<li>realtime: bool (default false)</li>
+								<li>jwt: bool (default false)</li>
+							</ul>
+						</dd>
+					</dl>
+				<p></p>
+
+
+				<h2>Collection classes</h2>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<a href="https://aplikacja-ac0d.restdb.io/rest/_jsapi.doc#systemjobs">system_jobs</a>
+						<br> 						<a href="https://aplikacja-ac0d.restdb.io/rest/_jsapi.doc#systemlog">system_log</a>
+						<br> 						<a href="https://aplikacja-ac0d.restdb.io/rest/_jsapi.doc#emailoutbound">email_outbound</a>
+						<br> 						<a href="https://aplikacja-ac0d.restdb.io/rest/_jsapi.doc#emailinbound">email_inbound</a>
+						<br> 						<a href="https://aplikacja-ac0d.restdb.io/rest/_jsapi.doc#emailunsubscribed">email_unsubscribed</a>
+						<br> 						<a href="https://aplikacja-ac0d.restdb.io/rest/_jsapi.doc#zamowienia">zamowienia</a>
+						<br> 						<a href="https://aplikacja-ac0d.restdb.io/rest/_jsapi.doc#zabiegi">zabiegi</a>
+						<br> 						<a href="https://aplikacja-ac0d.restdb.io/rest/_jsapi.doc#klienci">klienci</a>
+						<br> 
+					</div>
+				</div>
+				<a name="systemjobs"></a>
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>systemjobs</h4>
+					</div>
+					<div class="panel-body">
+						<dl>
+							<dt>Description</dt>
+							<dd>Background jobs for this database</dd>
+							<dt>Constructor</dt>
+							<dd>
+								<pre class="language-js code-toolbar"><code class=" language-js"><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">db<span class="token punctuation">.</span>systemjobs</span><span class="token punctuation">(</span>properties<span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+							</dd>
+							<dt>Properties</dt>
+							<dd>Initial property values for a new instance of an object, e.g.
+								<pre class="language-js code-toolbar"><code class=" language-js"><span class="token keyword">var</span> instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">db<span class="token punctuation">.</span>systemjobs</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"script"</span><span class="token punctuation">:</span> <span class="token string">"value"</span><span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+							</dd>
+						</dl>
+						<h4>Collection properties</h4>
+						<table class="table table-condensed proptable">
+							<thead>
+								<tr><th>name</th>
+								<th>type</th>
+								<th>description</th>
+							</tr></thead>
+							<tbody>
+								  
+								<tr>
+									<td>
+										<code>obj['script']</code>
+									</td>
+									<td>text</td>
+									<td>
+										<span class="text-muted">JavaScript code for job</span>
+									</td>
+								</tr>
+								    
+								<tr>
+									<td>
+										<code>obj['active']</code>
+									</td>
+									<td>bool</td>
+									<td>
+										<span class="text-muted">job is paused (created by system)</span>
+									</td>
+								</tr>
+								    
+								<tr>
+									<td>
+										<code>obj['description']</code>
+									</td>
+									<td>text</td>
+									<td>
+										<span class="text-muted">Job description</span>
+									</td>
+								</tr>
+								    
+								<tr>
+									<td>
+										<code>obj['crontab']</code>
+									</td>
+									<td>text</td>
+									<td>
+										<span class="text-muted">Crontab expression</span>
+									</td>
+								</tr>
+								  
+							</tbody>
+						</table>
+						<h4>Instance methods</h4>
+						<p>
+							<code>obj.save(callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is now the saved obj</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>obj.delete(callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token keyword">delete</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is the ID of the deleted object</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>obj.reload(callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token function">reload</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is now the reloaded object from the database</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>obj.on(evt, callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"PUT"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> evt<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// PUT: evt.data contain the ID of the updated object, i.e. obj</span>
+    <span class="token comment" spellcheck="true">// DELETE: evt.data contain an array of IDs, of which one is this obj</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>                 
+						<h4>Collection methods</h4>
+						<p>
+							<code>db.systemjobs.find(query, [hints], callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js"><span class="token keyword">var</span> query <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// get all records</span>
+<span class="token keyword">var</span> hints <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"$max"</span><span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">"$orderby"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"_id"</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// top ten, sort by creation id in descending order</span>
+db<span class="token punctuation">.</span>systemjobs<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>query<span class="token punctuation">,</span> hints<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is an array of systemjobs instances</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>db.systemjobs.getById(ID, callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">db<span class="token punctuation">.</span>systemjobs<span class="token punctuation">.</span><span class="token function">getById</span><span class="token punctuation">(</span><span class="token string">"570e4661edb62e6a00000000"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is a systemjobs instance</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<h4>Collection events</h4>
+						<p>
+							<code>db.systemjobs.on(evt, callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">db<span class="token punctuation">.</span>systemjobs<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"POST"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> evt<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// evt contains data about event</span>
+    <span class="token comment" spellcheck="true">// PUT:    {event: "put", collection: "systemjobs", data: "ID"}</span>
+    <span class="token comment" spellcheck="true">// POST:   {event: "post", collection: "systemjobs", data: {_id: "ID", ...}}</span>
+    <span class="token comment" spellcheck="true">// DELETE: {event: "delete", collection: "systemjobs", data: ["ID1", "ID2", ...]}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<a href="https://aplikacja-ac0d.restdb.io/rest/_jsapi.doc#top" class="pull-left">go to top</a>
+					</div>
+				</div>
+				<a name="systemlog"></a>
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>systemlog</h4>
+					</div>
+					<div class="panel-body">
+						<dl>
+							<dt>Description</dt>
+							<dd>Background log for this database</dd>
+							<dt>Constructor</dt>
+							<dd>
+								<pre class="language-js code-toolbar"><code class=" language-js"><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">db<span class="token punctuation">.</span>systemlog</span><span class="token punctuation">(</span>properties<span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+							</dd>
+							<dt>Properties</dt>
+							<dd>Initial property values for a new instance of an object, e.g.
+								<pre class="language-js code-toolbar"><code class=" language-js"><span class="token keyword">var</span> instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">db<span class="token punctuation">.</span>systemlog</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"status"</span><span class="token punctuation">:</span> <span class="token string">"value"</span><span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+							</dd>
+						</dl>
+						<h4>Collection properties</h4>
+						<table class="table table-condensed proptable">
+							<thead>
+								<tr><th>name</th>
+								<th>type</th>
+								<th>description</th>
+							</tr></thead>
+							<tbody>
+								  
+								<tr>
+									<td>
+										<code>obj['status']</code>
+									</td>
+									<td>text</td>
+									<td>
+										<span class="text-muted">Log status</span>
+									</td>
+								</tr>
+								    
+								<tr>
+									<td>
+										<code>obj['logstring']</code>
+									</td>
+									<td>text</td>
+									<td>
+										<span class="text-muted">Log output</span>
+									</td>
+								</tr>
+								  
+							</tbody>
+						</table>
+						<h4>Instance methods</h4>
+						<p>
+							<code>obj.save(callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is now the saved obj</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>obj.delete(callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token keyword">delete</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is the ID of the deleted object</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>obj.reload(callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token function">reload</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is now the reloaded object from the database</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>obj.on(evt, callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"PUT"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> evt<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// PUT: evt.data contain the ID of the updated object, i.e. obj</span>
+    <span class="token comment" spellcheck="true">// DELETE: evt.data contain an array of IDs, of which one is this obj</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>         
+						<h4>Collection methods</h4>
+						<p>
+							<code>db.systemlog.find(query, [hints], callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js"><span class="token keyword">var</span> query <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// get all records</span>
+<span class="token keyword">var</span> hints <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"$max"</span><span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">"$orderby"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"_id"</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// top ten, sort by creation id in descending order</span>
+db<span class="token punctuation">.</span>systemlog<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>query<span class="token punctuation">,</span> hints<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is an array of systemlog instances</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>db.systemlog.getById(ID, callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">db<span class="token punctuation">.</span>systemlog<span class="token punctuation">.</span><span class="token function">getById</span><span class="token punctuation">(</span><span class="token string">"570e4661edb62e6a00000000"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is a systemlog instance</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<h4>Collection events</h4>
+						<p>
+							<code>db.systemlog.on(evt, callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">db<span class="token punctuation">.</span>systemlog<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"POST"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> evt<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// evt contains data about event</span>
+    <span class="token comment" spellcheck="true">// PUT:    {event: "put", collection: "systemlog", data: "ID"}</span>
+    <span class="token comment" spellcheck="true">// POST:   {event: "post", collection: "systemlog", data: {_id: "ID", ...}}</span>
+    <span class="token comment" spellcheck="true">// DELETE: {event: "delete", collection: "systemlog", data: ["ID1", "ID2", ...]}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<a href="https://aplikacja-ac0d.restdb.io/rest/_jsapi.doc#top" class="pull-left">go to top</a>
+					</div>
+				</div>
+				<a name="emailoutbound"></a>
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>emailoutbound</h4>
+					</div>
+					<div class="panel-body">
+						<dl>
+							<dt>Description</dt>
+							<dd>Outgoing email from this application</dd>
+							<dt>Constructor</dt>
+							<dd>
+								<pre class="language-js code-toolbar"><code class=" language-js"><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">db<span class="token punctuation">.</span>emailoutbound</span><span class="token punctuation">(</span>properties<span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+							</dd>
+							<dt>Properties</dt>
+							<dd>Initial property values for a new instance of an object, e.g.
+								<pre class="language-js code-toolbar"><code class=" language-js"><span class="token keyword">var</span> instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">db<span class="token punctuation">.</span>emailoutbound</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"subject"</span><span class="token punctuation">:</span> <span class="token string">"value"</span><span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+							</dd>
+						</dl>
+						<h4>Collection properties</h4>
+						<table class="table table-condensed proptable">
+							<thead>
+								<tr><th>name</th>
+								<th>type</th>
+								<th>description</th>
+							</tr></thead>
+							<tbody>
+								  
+								<tr>
+									<td>
+										<code>obj['subject']</code>
+									</td>
+									<td>text</td>
+									<td>
+										<span class="text-muted">email subject (created by system)</span>
+									</td>
+								</tr>
+								    
+								<tr>
+									<td>
+										<code>obj['body']</code>
+									</td>
+									<td>richtext</td>
+									<td>
+										<span class="text-muted">mail body (created by system)</span>
+									</td>
+								</tr>
+								    
+								<tr>
+									<td>
+										<code>obj['to']</code>
+									</td>
+									<td>email</td>
+									<td>
+										<span class="text-muted">email to address (created by system)</span>
+									</td>
+								</tr>
+								  
+							</tbody>
+						</table>
+						<h4>Instance methods</h4>
+						<p>
+							<code>obj.save(callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is now the saved obj</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>obj.delete(callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token keyword">delete</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is the ID of the deleted object</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>obj.reload(callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token function">reload</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is now the reloaded object from the database</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>obj.on(evt, callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"PUT"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> evt<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// PUT: evt.data contain the ID of the updated object, i.e. obj</span>
+    <span class="token comment" spellcheck="true">// DELETE: evt.data contain an array of IDs, of which one is this obj</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>             
+						<h4>Collection methods</h4>
+						<p>
+							<code>db.emailoutbound.find(query, [hints], callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js"><span class="token keyword">var</span> query <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// get all records</span>
+<span class="token keyword">var</span> hints <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"$max"</span><span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">"$orderby"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"_id"</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// top ten, sort by creation id in descending order</span>
+db<span class="token punctuation">.</span>emailoutbound<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>query<span class="token punctuation">,</span> hints<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is an array of emailoutbound instances</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>db.emailoutbound.getById(ID, callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">db<span class="token punctuation">.</span>emailoutbound<span class="token punctuation">.</span><span class="token function">getById</span><span class="token punctuation">(</span><span class="token string">"570e4661edb62e6a00000000"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is a emailoutbound instance</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<h4>Collection events</h4>
+						<p>
+							<code>db.emailoutbound.on(evt, callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">db<span class="token punctuation">.</span>emailoutbound<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"POST"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> evt<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// evt contains data about event</span>
+    <span class="token comment" spellcheck="true">// PUT:    {event: "put", collection: "emailoutbound", data: "ID"}</span>
+    <span class="token comment" spellcheck="true">// POST:   {event: "post", collection: "emailoutbound", data: {_id: "ID", ...}}</span>
+    <span class="token comment" spellcheck="true">// DELETE: {event: "delete", collection: "emailoutbound", data: ["ID1", "ID2", ...]}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<a href="https://aplikacja-ac0d.restdb.io/rest/_jsapi.doc#top" class="pull-left">go to top</a>
+					</div>
+				</div>
+				<a name="emailinbound"></a>
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>emailinbound</h4>
+					</div>
+					<div class="panel-body">
+						<dl>
+							<dt>Description</dt>
+							<dd>Incoming email to this application</dd>
+							<dt>Constructor</dt>
+							<dd>
+								<pre class="language-js code-toolbar"><code class=" language-js"><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">db<span class="token punctuation">.</span>emailinbound</span><span class="token punctuation">(</span>properties<span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+							</dd>
+							<dt>Properties</dt>
+							<dd>Initial property values for a new instance of an object, e.g.
+								<pre class="language-js code-toolbar"><code class=" language-js"><span class="token keyword">var</span> instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">db<span class="token punctuation">.</span>emailinbound</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"from"</span><span class="token punctuation">:</span> <span class="token string">"value"</span><span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+							</dd>
+						</dl>
+						<h4>Collection properties</h4>
+						<table class="table table-condensed proptable">
+							<thead>
+								<tr><th>name</th>
+								<th>type</th>
+								<th>description</th>
+							</tr></thead>
+							<tbody>
+								  
+								<tr>
+									<td>
+										<code>obj['from']</code>
+									</td>
+									<td>email</td>
+									<td>
+										<span class="text-muted">email from address (created by system)</span>
+									</td>
+								</tr>
+								    
+								<tr>
+									<td>
+										<code>obj['subject']</code>
+									</td>
+									<td>text</td>
+									<td>
+										<span class="text-muted">email subject (created by system)</span>
+									</td>
+								</tr>
+								    
+								<tr>
+									<td>
+										<code>obj['body']</code>
+									</td>
+									<td>richtext</td>
+									<td>
+										<span class="text-muted">mail body (created by system)</span>
+									</td>
+								</tr>
+								  
+							</tbody>
+						</table>
+						<h4>Instance methods</h4>
+						<p>
+							<code>obj.save(callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is now the saved obj</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>obj.delete(callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token keyword">delete</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is the ID of the deleted object</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>obj.reload(callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token function">reload</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is now the reloaded object from the database</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>obj.on(evt, callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"PUT"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> evt<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// PUT: evt.data contain the ID of the updated object, i.e. obj</span>
+    <span class="token comment" spellcheck="true">// DELETE: evt.data contain an array of IDs, of which one is this obj</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>             
+						<h4>Collection methods</h4>
+						<p>
+							<code>db.emailinbound.find(query, [hints], callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js"><span class="token keyword">var</span> query <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// get all records</span>
+<span class="token keyword">var</span> hints <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"$max"</span><span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">"$orderby"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"_id"</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// top ten, sort by creation id in descending order</span>
+db<span class="token punctuation">.</span>emailinbound<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>query<span class="token punctuation">,</span> hints<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is an array of emailinbound instances</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>db.emailinbound.getById(ID, callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">db<span class="token punctuation">.</span>emailinbound<span class="token punctuation">.</span><span class="token function">getById</span><span class="token punctuation">(</span><span class="token string">"570e4661edb62e6a00000000"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is a emailinbound instance</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<h4>Collection events</h4>
+						<p>
+							<code>db.emailinbound.on(evt, callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">db<span class="token punctuation">.</span>emailinbound<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"POST"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> evt<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// evt contains data about event</span>
+    <span class="token comment" spellcheck="true">// PUT:    {event: "put", collection: "emailinbound", data: "ID"}</span>
+    <span class="token comment" spellcheck="true">// POST:   {event: "post", collection: "emailinbound", data: {_id: "ID", ...}}</span>
+    <span class="token comment" spellcheck="true">// DELETE: {event: "delete", collection: "emailinbound", data: ["ID1", "ID2", ...]}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<a href="https://aplikacja-ac0d.restdb.io/rest/_jsapi.doc#top" class="pull-left">go to top</a>
+					</div>
+				</div>
+				<a name="emailunsubscribed"></a>
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>emailunsubscribed</h4>
+					</div>
+					<div class="panel-body">
+						<dl>
+							<dt>Description</dt>
+							<dd>Unsubscribed email from this application</dd>
+							<dt>Constructor</dt>
+							<dd>
+								<pre class="language-js code-toolbar"><code class=" language-js"><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">db<span class="token punctuation">.</span>emailunsubscribed</span><span class="token punctuation">(</span>properties<span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+							</dd>
+							<dt>Properties</dt>
+							<dd>Initial property values for a new instance of an object, e.g.
+								<pre class="language-js code-toolbar"><code class=" language-js"><span class="token keyword">var</span> instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">db<span class="token punctuation">.</span>emailunsubscribed</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"to"</span><span class="token punctuation">:</span> <span class="token string">"value"</span><span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+							</dd>
+						</dl>
+						<h4>Collection properties</h4>
+						<table class="table table-condensed proptable">
+							<thead>
+								<tr><th>name</th>
+								<th>type</th>
+								<th>description</th>
+							</tr></thead>
+							<tbody>
+								  
+								<tr>
+									<td>
+										<code>obj['to']</code>
+									</td>
+									<td>email</td>
+									<td>
+										<span class="text-muted">unsubscribe email address (created by system)</span>
+									</td>
+								</tr>
+								  
+							</tbody>
+						</table>
+						<h4>Instance methods</h4>
+						<p>
+							<code>obj.save(callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is now the saved obj</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>obj.delete(callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token keyword">delete</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is the ID of the deleted object</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>obj.reload(callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token function">reload</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is now the reloaded object from the database</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>obj.on(evt, callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"PUT"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> evt<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// PUT: evt.data contain the ID of the updated object, i.e. obj</span>
+    <span class="token comment" spellcheck="true">// DELETE: evt.data contain an array of IDs, of which one is this obj</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>     
+						<h4>Collection methods</h4>
+						<p>
+							<code>db.emailunsubscribed.find(query, [hints], callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js"><span class="token keyword">var</span> query <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// get all records</span>
+<span class="token keyword">var</span> hints <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"$max"</span><span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">"$orderby"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"_id"</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// top ten, sort by creation id in descending order</span>
+db<span class="token punctuation">.</span>emailunsubscribed<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>query<span class="token punctuation">,</span> hints<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is an array of emailunsubscribed instances</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>db.emailunsubscribed.getById(ID, callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">db<span class="token punctuation">.</span>emailunsubscribed<span class="token punctuation">.</span><span class="token function">getById</span><span class="token punctuation">(</span><span class="token string">"570e4661edb62e6a00000000"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is a emailunsubscribed instance</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<h4>Collection events</h4>
+						<p>
+							<code>db.emailunsubscribed.on(evt, callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">db<span class="token punctuation">.</span>emailunsubscribed<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"POST"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> evt<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// evt contains data about event</span>
+    <span class="token comment" spellcheck="true">// PUT:    {event: "put", collection: "emailunsubscribed", data: "ID"}</span>
+    <span class="token comment" spellcheck="true">// POST:   {event: "post", collection: "emailunsubscribed", data: {_id: "ID", ...}}</span>
+    <span class="token comment" spellcheck="true">// DELETE: {event: "delete", collection: "emailunsubscribed", data: ["ID1", "ID2", ...]}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<a href="https://aplikacja-ac0d.restdb.io/rest/_jsapi.doc#top" class="pull-left">go to top</a>
+					</div>
+				</div>
+				<a name="zamowienia"></a>
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>zamowienia</h4>
+					</div>
+					<div class="panel-body">
+						<dl>
+							<dt>Description</dt>
+							<dd>Zamówione zabiegi kosmetyczne</dd>
+							<dt>Constructor</dt>
+							<dd>
+								<pre class="language-js code-toolbar"><code class=" language-js"><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">db<span class="token punctuation">.</span>zamowienia</span><span class="token punctuation">(</span>properties<span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+							</dd>
+							<dt>Properties</dt>
+							<dd>Initial property values for a new instance of an object, e.g.
+								<pre class="language-js code-toolbar"><code class=" language-js"><span class="token keyword">var</span> instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">db<span class="token punctuation">.</span>zamowienia</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"idKlienta"</span><span class="token punctuation">:</span> <span class="token string">"value"</span><span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+							</dd>
+						</dl>
+						<h4>Collection properties</h4>
+						<table class="table table-condensed proptable">
+							<thead>
+								<tr><th>name</th>
+								<th>type</th>
+								<th>description</th>
+							</tr></thead>
+							<tbody>
+								  
+								<tr>
+									<td>
+										<code>obj['idKlienta']</code>
+									</td>
+									<td>text</td>
+									<td>
+										<span class="text-muted">- missing description -</span>
+									</td>
+								</tr>
+								    
+								<tr>
+									<td>
+										<code>obj['idZabiegu']</code>
+									</td>
+									<td>text</td>
+									<td>
+										<span class="text-muted">- missing description -</span>
+									</td>
+								</tr>
+								    
+								<tr>
+									<td>
+										<code>obj['termin']</code>
+									</td>
+									<td>datetime</td>
+									<td>
+										<span class="text-muted">- missing description -</span>
+									</td>
+								</tr>
+								  
+							</tbody>
+						</table>
+						<h4>Instance methods</h4>
+						<p>
+							<code>obj.save(callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is now the saved obj</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>obj.delete(callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token keyword">delete</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is the ID of the deleted object</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>obj.reload(callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token function">reload</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is now the reloaded object from the database</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>obj.on(evt, callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"PUT"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> evt<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// PUT: evt.data contain the ID of the updated object, i.e. obj</span>
+    <span class="token comment" spellcheck="true">// DELETE: evt.data contain an array of IDs, of which one is this obj</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>             
+						<h4>Collection methods</h4>
+						<p>
+							<code>db.zamowienia.find(query, [hints], callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js"><span class="token keyword">var</span> query <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// get all records</span>
+<span class="token keyword">var</span> hints <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"$max"</span><span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">"$orderby"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"_id"</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// top ten, sort by creation id in descending order</span>
+db<span class="token punctuation">.</span>zamowienia<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>query<span class="token punctuation">,</span> hints<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is an array of zamowienia instances</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>db.zamowienia.getById(ID, callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">db<span class="token punctuation">.</span>zamowienia<span class="token punctuation">.</span><span class="token function">getById</span><span class="token punctuation">(</span><span class="token string">"570e4661edb62e6a00000000"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is a zamowienia instance</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<h4>Collection events</h4>
+						<p>
+							<code>db.zamowienia.on(evt, callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">db<span class="token punctuation">.</span>zamowienia<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"POST"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> evt<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// evt contains data about event</span>
+    <span class="token comment" spellcheck="true">// PUT:    {event: "put", collection: "zamowienia", data: "ID"}</span>
+    <span class="token comment" spellcheck="true">// POST:   {event: "post", collection: "zamowienia", data: {_id: "ID", ...}}</span>
+    <span class="token comment" spellcheck="true">// DELETE: {event: "delete", collection: "zamowienia", data: ["ID1", "ID2", ...]}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<a href="https://aplikacja-ac0d.restdb.io/rest/_jsapi.doc#top" class="pull-left">go to top</a>
+					</div>
+				</div>
+				<a name="zabiegi"></a>
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>zabiegi</h4>
+					</div>
+					<div class="panel-body">
+						<dl>
+							<dt>Description</dt>
+							<dd>Zabiegi kosmetyczne</dd>
+							<dt>Constructor</dt>
+							<dd>
+								<pre class="language-js code-toolbar"><code class=" language-js"><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">db<span class="token punctuation">.</span>zabiegi</span><span class="token punctuation">(</span>properties<span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+							</dd>
+							<dt>Properties</dt>
+							<dd>Initial property values for a new instance of an object, e.g.
+								<pre class="language-js code-toolbar"><code class=" language-js"><span class="token keyword">var</span> instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">db<span class="token punctuation">.</span>zabiegi</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"nazwa"</span><span class="token punctuation">:</span> <span class="token string">"value"</span><span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+							</dd>
+						</dl>
+						<h4>Collection properties</h4>
+						<table class="table table-condensed proptable">
+							<thead>
+								<tr><th>name</th>
+								<th>type</th>
+								<th>description</th>
+							</tr></thead>
+							<tbody>
+								  
+								<tr>
+									<td>
+										<code>obj['nazwa']</code>
+									</td>
+									<td>text</td>
+									<td>
+										<span class="text-muted">- missing description -</span>
+									</td>
+								</tr>
+								    
+								<tr>
+									<td>
+										<code>obj['czas']</code>
+									</td>
+									<td>number</td>
+									<td>
+										<span class="text-muted">- missing description -</span>
+									</td>
+								</tr>
+								    
+								<tr>
+									<td>
+										<code>obj['opis']</code>
+									</td>
+									<td>text</td>
+									<td>
+										<span class="text-muted">- missing description -</span>
+									</td>
+								</tr>
+								  
+							</tbody>
+						</table>
+						<h4>Instance methods</h4>
+						<p>
+							<code>obj.save(callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is now the saved obj</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>obj.delete(callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token keyword">delete</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is the ID of the deleted object</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>obj.reload(callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token function">reload</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is now the reloaded object from the database</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>obj.on(evt, callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"PUT"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> evt<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// PUT: evt.data contain the ID of the updated object, i.e. obj</span>
+    <span class="token comment" spellcheck="true">// DELETE: evt.data contain an array of IDs, of which one is this obj</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>             
+						<h4>Collection methods</h4>
+						<p>
+							<code>db.zabiegi.find(query, [hints], callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js"><span class="token keyword">var</span> query <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// get all records</span>
+<span class="token keyword">var</span> hints <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"$max"</span><span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">"$orderby"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"_id"</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// top ten, sort by creation id in descending order</span>
+db<span class="token punctuation">.</span>zabiegi<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>query<span class="token punctuation">,</span> hints<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is an array of zabiegi instances</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>db.zabiegi.getById(ID, callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">db<span class="token punctuation">.</span>zabiegi<span class="token punctuation">.</span><span class="token function">getById</span><span class="token punctuation">(</span><span class="token string">"570e4661edb62e6a00000000"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is a zabiegi instance</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<h4>Collection events</h4>
+						<p>
+							<code>db.zabiegi.on(evt, callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">db<span class="token punctuation">.</span>zabiegi<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"POST"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> evt<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// evt contains data about event</span>
+    <span class="token comment" spellcheck="true">// PUT:    {event: "put", collection: "zabiegi", data: "ID"}</span>
+    <span class="token comment" spellcheck="true">// POST:   {event: "post", collection: "zabiegi", data: {_id: "ID", ...}}</span>
+    <span class="token comment" spellcheck="true">// DELETE: {event: "delete", collection: "zabiegi", data: ["ID1", "ID2", ...]}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<a href="https://aplikacja-ac0d.restdb.io/rest/_jsapi.doc#top" class="pull-left">go to top</a>
+					</div>
+				</div>
+				<a name="klienci"></a>
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h4>klienci</h4>
+					</div>
+					<div class="panel-body">
+						<dl>
+							<dt>Description</dt>
+							<dd>Klienci</dd>
+							<dt>Constructor</dt>
+							<dd>
+								<pre class="language-js code-toolbar"><code class=" language-js"><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">db<span class="token punctuation">.</span>klienci</span><span class="token punctuation">(</span>properties<span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+							</dd>
+							<dt>Properties</dt>
+							<dd>Initial property values for a new instance of an object, e.g.
+								<pre class="language-js code-toolbar"><code class=" language-js"><span class="token keyword">var</span> instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">db<span class="token punctuation">.</span>klienci</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"tel"</span><span class="token punctuation">:</span> <span class="token string">"value"</span><span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+							</dd>
+						</dl>
+						<h4>Collection properties</h4>
+						<table class="table table-condensed proptable">
+							<thead>
+								<tr><th>name</th>
+								<th>type</th>
+								<th>description</th>
+							</tr></thead>
+							<tbody>
+								  
+								<tr>
+									<td>
+										<code>obj['tel']</code>
+									</td>
+									<td>text</td>
+									<td>
+										<span class="text-muted">Nr telefonu klienta</span>
+									</td>
+								</tr>
+								    
+								<tr>
+									<td>
+										<code>obj['imie']</code>
+									</td>
+									<td>text</td>
+									<td>
+										<span class="text-muted">Imię klienta</span>
+									</td>
+								</tr>
+								    
+								<tr>
+									<td>
+										<code>obj['nazwisko']</code>
+									</td>
+									<td>text</td>
+									<td>
+										<span class="text-muted">Nazwisko klienta</span>
+									</td>
+								</tr>
+								  
+							</tbody>
+						</table>
+						<h4>Instance methods</h4>
+						<p>
+							<code>obj.save(callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is now the saved obj</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>obj.delete(callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token keyword">delete</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is the ID of the deleted object</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>obj.reload(callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token function">reload</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is now the reloaded object from the database</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>obj.on(evt, callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">obj<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"PUT"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> evt<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// PUT: evt.data contain the ID of the updated object, i.e. obj</span>
+    <span class="token comment" spellcheck="true">// DELETE: evt.data contain an array of IDs, of which one is this obj</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>             
+						<h4>Collection methods</h4>
+						<p>
+							<code>db.klienci.find(query, [hints], callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js"><span class="token keyword">var</span> query <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// get all records</span>
+<span class="token keyword">var</span> hints <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"$max"</span><span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">"$orderby"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"_id"</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// top ten, sort by creation id in descending order</span>
+db<span class="token punctuation">.</span>klienci<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>query<span class="token punctuation">,</span> hints<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is an array of klienci instances</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<p>
+							<code>db.klienci.getById(ID, callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">db<span class="token punctuation">.</span>klienci<span class="token punctuation">.</span><span class="token function">getById</span><span class="token punctuation">(</span><span class="token string">"570e4661edb62e6a00000000"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// res is a klienci instance</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<h4>Collection events</h4>
+						<p>
+							<code>db.klienci.on(evt, callback)</code>
+						</p>
+						<pre class="language-js code-toolbar"><code class=" language-js">db<span class="token punctuation">.</span>klienci<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"POST"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> evt<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// evt contains data about event</span>
+    <span class="token comment" spellcheck="true">// PUT:    {event: "put", collection: "klienci", data: "ID"}</span>
+    <span class="token comment" spellcheck="true">// POST:   {event: "post", collection: "klienci", data: {_id: "ID", ...}}</span>
+    <span class="token comment" spellcheck="true">// DELETE: {event: "delete", collection: "klienci", data: ["ID1", "ID2", ...]}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre>
+						<a href="https://aplikacja-ac0d.restdb.io/rest/_jsapi.doc#top" class="pull-left">go to top</a>
+					</div>
+				</div>
+				<p>
+					</p><h4>Subscribe to Database events in realtime</h4>
+					To use the realtime features set options parameter to {realtime: true}.
+					<p>
+						</p><dl>
+							<dt>Listen for data events for REST operations</dt>
+							<dd>
+								<pre><code>db.on(event, callback)</code></pre>
+							</dd>
+							<dt>Predefined Events</dt>
+							<dd>
+								<ul class="list-unstyled">
+									<li>"CONNECT"</li>
+									<li>"DISCONNECT"</li>
+									<li>"POST"</li>
+									<li>"PUT"</li>
+									<li>"DELETE"</li>
+								</ul>
+							</dd>
+
+							<dt>Subscribe to "PUT" database operations</dt>
+							<dd>
+								<pre class="language-js code-toolbar"><code class=" language-js">db<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"PUT"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>error<span class="token punctuation">,</span> eventdata<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// eventdata format: {event: "put", collection: "the-collection-name", data: "ID"}</span>
+<span class="token punctuation">}</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre><code class=" language-js">
+								</code>
+							</dd>
+							<dt>Subscribe to "POST" database operations</dt>
+							<dd>
+								<pre class="language-js code-toolbar"><code class=" language-js">db<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"POST"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>error<span class="token punctuation">,</span> eventdata<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// eventdata format: {event: "post", collection: "the-collection.name", data: {_id: ID, ...}}</span>
+<span class="token punctuation">}</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre><code class=" language-js">
+								</code>
+							</dd>
+							<dt>Subscribe to "DELETE" database operations</dt>
+							<dd>
+								<pre class="language-js code-toolbar"><code class=" language-js">db<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"DELETE"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>error<span class="token punctuation">,</span> eventdata<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// eventdata format: {event: "delete", collection: "the-collection-name", data: ["ID1", "ID2", ...]}</span>
+<span class="token punctuation">}</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre><code class=" language-js">
+								</code>
+							</dd>
+
+						</dl>
+						<hr>
+						<h4>Publish / Subscribe to custom events</h4>
+						<dl>
+							<dt>Subscribe to custom events from applications</dt>
+							<dd>
+								<pre class="language-js code-toolbar"><code class=" language-js">db<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"&lt;your_event&gt;"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>error<span class="token punctuation">,</span> eventdata<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// eventdata format: {event: "&lt;your_event&gt;", data: {...}}</span>
+<span class="token punctuation">}</span></code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre><code class=" language-js">
+								</code>
+							</dd>
+							<dt>Publish custom events</dt>
+							<dd>
+								<pre class="language-js code-toolbar"><code class=" language-js">db<span class="token punctuation">.</span><span class="token function">publish</span><span class="token punctuation">(</span><span class="token string">"&lt;your_event&gt;"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string">"answer"</span><span class="token punctuation">:</span> <span class="token number">42</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>error<span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// your handling code here</span>
+<span class="token punctuation">}</span>
+							</code><div class="toolbar"><div class="toolbar-item"><a>Copy</a></div></div></pre><code class=" language-js">
+								</code>
+							</dd>
+						</dl>
+					<p></p>
+			</div>
+		</div>
+	</div>
+
+
+</body></html>
