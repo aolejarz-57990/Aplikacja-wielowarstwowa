@@ -1,7 +1,18 @@
-// Obsługa kolekcji klientów
+//Uzyskanie dostepu do bazy danych
+const encryptedAPIkey = "U2FsdGVkX18Ikhl8uGAj3j/+XdcYdUjGGbomZZUPR2BZyAPaVIXPGpNJFlr+OPjxiwWvRlQ6wnnlqqUXMtXN4w==";
 const APIkey = decrypt(encryptedAPIkey,passcode);
+var db = new restdb(APIkey);
 
-function pobierzKlientow() {
+// Obsługa kolekcji klientów
+
+function pobierzKlientow(onDane) {
+    const query = {}; // get all records
+    const hints = {"$max": 100, "$orderby": {"_id": -1}};
+    db.klienci.find(query, function(err, res){
+    if (!err && typeof(onDane) == "function"){
+        onDane(res);
+    }
+});
 }
 
 function dodajKlienta(klient) {    
@@ -70,7 +81,6 @@ class Zamowienia {
     Termin = "";
 }
 
-const encryptedAPIkey = "U2FsdGVkX18kx+oDj5Lz7dwGIXskm5DGm+tBkwmckyHU2F54YTwb0Ubl4IPGHN3W2nf36BB6KUnlcQoTqt70d1Yt6XSTjunZFItxPJ3KAD0=";
 function encrypt(content, password) { 
     return CryptoJS.AES.encrypt(JSON.stringify({ content }), password).toString();
 }
