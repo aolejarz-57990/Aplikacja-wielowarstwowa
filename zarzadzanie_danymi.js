@@ -1,4 +1,5 @@
 // Obsługa kolekcji klientów
+const APIkey = decrypt(encryptedAPIkey,passcode);
 function pobierzKlientow() {
 }
 
