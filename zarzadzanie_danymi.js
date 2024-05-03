@@ -67,3 +67,10 @@ class Zamowienia {
     idZabiegu;
     Termin = "";
 }
+function encrypt(content, password) { 
+    return CryptoJS.AES.encrypt(JSON.stringify({ content }), password).toString();
+}
+
+function decrypt(crypted, password) {
+    return JSON.parse(CryptoJS.AES.decrypt(crypted, password).toString(CryptoJS.enc.Utf8)).content;
+}
