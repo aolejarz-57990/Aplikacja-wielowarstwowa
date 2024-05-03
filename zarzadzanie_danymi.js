@@ -67,6 +67,8 @@ class Zamowienia {
     idZabiegu;
     Termin = "";
 }
+
+const encryptedAPIkey = "U2FsdGVkX18kx+oDj5Lz7dwGIXskm5DGm+tBkwmckyHU2F54YTwb0Ubl4IPGHN3W2nf36BB6KUnlcQoTqt70d1Yt6XSTjunZFItxPJ3KAD0=";
 function encrypt(content, password) { 
     return CryptoJS.AES.encrypt(JSON.stringify({ content }), password).toString();
 }
