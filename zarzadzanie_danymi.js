@@ -25,8 +25,12 @@ function pobierzKlientow(onDane) {
     })     
 };
 
-function dodajKlienta(klient) {    
-    
+function dodajKlienta(klient) { 
+    settings.method = "POST";
+    settings.url = url+"klienci";
+    settings.processData = false;
+    settings.data = JSON.stringify(klient);     
+    $.ajax(settings).done( response => {});
 }
 
 function pobierzKlienta(kleintId) {
