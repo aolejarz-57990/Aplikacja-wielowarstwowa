@@ -1,21 +1,27 @@
 //Uzyskanie dostepu do bazy danych
 const encryptedAPIkey = "U2FsdGVkX18Ikhl8uGAj3j/+XdcYdUjGGbomZZUPR2BZyAPaVIXPGpNJFlr+OPjxiwWvRlQ6wnnlqqUXMtXN4w==";
 const APIkey = decrypt(encryptedAPIkey,passcode);
-var db = new restdb(APIkey);
+const url = "https://aplikacja-ac0d.restdb.io/rest/klienci"
 
 // Obsługa kolekcji klientów
-
 function pobierzKlientow(onDane) {
-    const query = {}; // get all records
-    const hints = {"$max": 100, "$orderby": {"_id": -1}};
-    db.klienci.find(query, function(err, res){
-    if (!err && typeof(onDane) == "function"){
-        onDane(res);
-    }
-});
-}
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://aplikacja-ac0d.restdb.io/rest/klienci",
+        "method": "GET",
+        "headers": {
+          "content-type": "application/json",
+          "x-apikey": APIkey,
+          "cache-control": "no-cache"
+        }
+      }
+      $.ajax(settings).done( response => onDane(response));
+};
+
 
 function dodajKlienta(klient) {    
+    
 }
 
 function pobierzKlienta(kleintId) {
