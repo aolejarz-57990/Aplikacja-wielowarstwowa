@@ -1,6 +1,6 @@
 function initializujStrone() {
     document.querySelector("#btn_klienci").addEventListener("click",()=>{
-        wypelnijListePacjentow();
+        wypelnijListeKlientow();
         przelaczStrone("klienci");
     });
     document.querySelector("#btn_zabiegi").addEventListener("click",()=>{
@@ -15,8 +15,8 @@ function initializujStrone() {
     });
     document.querySelector("#btn_usun_klienci").addEventListener("click",()=>{
         if (confirm("Czy na pewno chcesz usunąć pacjenta?")){
-            listaKlientów=listaKlientów.filter(pacjent=>pacjent._id!=aktualnyPacjent._id);
-            wypelnijListePacjentow();
+            listaKlientow=listaKlientow.filter(pacjent=>pacjent._id!=aktualnyPacjent._id);
+            wypelnijListeKlientow();
             przelaczStrone("klienci");
         }
     });
@@ -36,13 +36,34 @@ function initializujStrone() {
     document.querySelector("#btn_powrot_zabiegi").addEventListener("click",()=>{
         przelaczStrone("zabiegi");
     });
+    document.querySelector("#btn_dodaj_klienta").addEventListener("click",() => {
+        document.querySelector("#dodaj_klienta_submit").hidden = false;
+        przelaczStrone("dodaj_klienta");
+    })
+    document.querySelector("#dodaj_klienta_submit").addEventListener("click", ev => {
+      ev.preventDefault();
+      ev.stopPropagation();
+      const klient = {
+        imie: document.querySelector("#nowy_klient_imie").value,
+        nazwisko: document.querySelector("#nowy_klient_nazwisko").value,
+        tel: document.querySelector("#nowy_klient_tel").value
+      }
+      document.querySelector("#dodaj_klienta_submit").hidden = true;
+      dodajKlienta(klient,() => {
+        pobierzKlientow( () => {
+          wypelnijListeKlientow();
+          przelaczStrone("klienci");
+          }
+        );
+      });
+    })
 }
       
-function wypelnijListePacjentow() {
+function wypelnijListeKlientow() {
     const tabelaPacjentow = document.querySelector("#klienci tbody");
     tabelaPacjentow.innerHTML = "";
     const templateWiersz = document.querySelector("#wiersz_klienci").content;
-    listaKlientów.forEach(pacjent => {
+    listaKlientow.forEach(pacjent => {
         const templateTR = templateWiersz.querySelector("tr");
         const wiersz = templateWiersz.cloneNode(true);
         const komorki = wiersz.querySelectorAll("td span");
@@ -105,7 +126,7 @@ function wypelnijListePacjentow() {
     sekcjaSzczegoly.hidden = false;
   }
 
-  let listaKlientów = [];
+  let listaKlientow = [];
 
   let listaZabiegow = [
     { "id": "1",
@@ -129,7 +150,7 @@ function wypelnijListePacjentow() {
      "Czasochlonnosc": "60",
       "Opis": "Opis zabiegu5"},
   ]
-  const sekcje = ["menu_glowne","klienci","zabiegi","kalendarz","klient_szczegoly","zabieg_szczegoly"]
+  const sekcje = ["menu_glowne","klienci","zabiegi","kalendarz","klient_szczegoly","zabieg_szczegoly","dodaj_klienta"]
 
   function przelaczStrone(strona) { 
     sekcje.forEach(sekcja => { 
