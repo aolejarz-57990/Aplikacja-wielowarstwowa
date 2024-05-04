@@ -15,22 +15,27 @@ const settings = {
   }
 
 // Obsługa kolekcji klientów
-function pobierzKlientow(onDane) {
+function pobierzKlientow(onSuccess) {
     settings.method = "GET";
     settings.url = url+"klienci";
     $.ajax(settings).done( response => {
-        if(typeof(onDane)=="function") {
-            onDane(response);
+        listaKlientow = response;
+        if(typeof(onSuccess)=="function") {
+            onSuccess();
         }
     })     
 };
 
-function dodajKlienta(klient) { 
+function dodajKlienta(klient,onSuccess) { 
     settings.method = "POST";
     settings.url = url+"klienci";
     settings.processData = false;
     settings.data = JSON.stringify(klient);     
-    $.ajax(settings).done( response => {});
+    $.ajax(settings).done( response => {
+        if(typeof(onSuccess)=="function") {
+            onSuccess(response);
+        }
+    })
 }
 
 function pobierzKlienta(kleintId) {
