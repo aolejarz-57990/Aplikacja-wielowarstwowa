@@ -18,7 +18,11 @@ const settings = {
 function pobierzKlientow(onDane) {
     settings.method = "GET";
     settings.url = url+"klienci";
-    $.ajax(settings).done( response => onDane(response));
+    $.ajax(settings).done( response => {
+        if(typeof(onDane)=="function") {
+            onDane(response);
+        }
+    })     
 };
 
 function dodajKlienta(klient) {    
