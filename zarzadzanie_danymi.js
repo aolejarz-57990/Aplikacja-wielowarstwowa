@@ -2,11 +2,11 @@
 const encryptedAPIkey = "U2FsdGVkX18Ikhl8uGAj3j/+XdcYdUjGGbomZZUPR2BZyAPaVIXPGpNJFlr+OPjxiwWvRlQ6wnnlqqUXMtXN4w==";
 const APIkey = decrypt(encryptedAPIkey,passcode);
 const url = "https://aplikacja-ac0d.restdb.io/rest/";
-const settingsKlienci = {
+const settings = {
     "async": true,
     "crossDomain": true,
-    "url": url+"klienci",
-    "method": "GET",
+    "url": "",
+    "method": "",
     "headers": {
       "content-type": "application/json",
       "x-apikey": APIkey,
@@ -16,7 +16,9 @@ const settingsKlienci = {
 
 // Obsługa kolekcji klientów
 function pobierzKlientow(onDane) {
-    $.ajax(settingsKlienci).done( response => onDane(response));
+    settings.method = "GET";
+    settings.url = url+"klienci";
+    $.ajax(settings).done( response => onDane(response));
 };
 
 function dodajKlienta(klient) {    
