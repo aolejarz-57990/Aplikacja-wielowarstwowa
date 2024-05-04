@@ -26,6 +26,9 @@
         padding: 3px;
         border-collapse: collapse;
       }
+      tbody tr {
+        cursor: pointer;
+      }
       .srodek {
         display: flex;
         flex-direction: column;
@@ -34,6 +37,11 @@
       body {
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         min-height: 100vh;
+      }
+      .spread {
+        display: flex;
+        justify-content: space-between;
+        width: 300px;
       }
     </style>
   </head>
@@ -107,14 +115,20 @@
       </section>
 
       <section id="klient_szczegoly" hidden>
-        <div>
+        <div class="srodek">
           <h2 class="wysrodkuj">Szczegóły</h2>
-          <div>Imię</div>
-          <input id="szczegoly_imie" type="text">
-          <div>Nazwisko</div>
-          <input id="szczegoly_nazwisko" type="text">
-          <div>Telefon</div>
-          <input id="szczegoly_telefon" type="text">
+          <span class="spread" >
+            <label for="szczegoly_imie">Imię:</label>
+            <input id="szczegoly_imie" type="text">
+          </span>
+          <span class="spread" >
+            <label for="szczegoly_nazwisko">Nazwisko:</label>
+            <input id="szczegoly_nazwisko" type="text">
+          </span>
+          <span class="spread" >
+            <label for="szczegoly_telefon">Tel:</label>
+            <input id="szczegoly_telefon" type="text">
+          </span>
           <div>
             <button id="btn_zapisz_klienci" type="button">Zapisz</button>
             <button id="btn_usun_klienci" type="button">Usuń</button>
