@@ -1,24 +1,23 @@
 //Uzyskanie dostepu do bazy danych
 const encryptedAPIkey = "U2FsdGVkX18Ikhl8uGAj3j/+XdcYdUjGGbomZZUPR2BZyAPaVIXPGpNJFlr+OPjxiwWvRlQ6wnnlqqUXMtXN4w==";
 const APIkey = decrypt(encryptedAPIkey,passcode);
-const url = "https://aplikacja-ac0d.restdb.io/rest/klienci"
+const url = "https://aplikacja-ac0d.restdb.io/rest/";
+const settingsKlienci = {
+    "async": true,
+    "crossDomain": true,
+    "url": url+"klienci",
+    "method": "GET",
+    "headers": {
+      "content-type": "application/json",
+      "x-apikey": APIkey,
+      "cache-control": "no-cache"
+    }
+  }
 
 // Obsługa kolekcji klientów
 function pobierzKlientow(onDane) {
-    var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "https://aplikacja-ac0d.restdb.io/rest/klienci",
-        "method": "GET",
-        "headers": {
-          "content-type": "application/json",
-          "x-apikey": APIkey,
-          "cache-control": "no-cache"
-        }
-      }
-      $.ajax(settings).done( response => onDane(response));
+    $.ajax(settingsKlienci).done( response => onDane(response));
 };
-
 
 function dodajKlienta(klient) {    
     
