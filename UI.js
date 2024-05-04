@@ -15,7 +15,7 @@ function initializujStrone() {
     });
     document.querySelector("#btn_usun_klienci").addEventListener("click",()=>{
         if (confirm("Czy na pewno chcesz usunąć pacjenta?")){
-            daneKlientów=daneKlientów.filter(pacjent=>pacjent.id!=aktualnyPacjent.id);
+            listaKlientów=listaKlientów.filter(pacjent=>pacjent._id!=aktualnyPacjent._id);
             wypelnijListePacjentow();
             przelaczStrone("klienci");
         }
@@ -28,7 +28,7 @@ function initializujStrone() {
     });
     document.querySelector("#btn_usun_zabiegi").addEventListener("click",()=>{
         if (confirm("Czy na pewno chcesz usunąć zabieg?")){
-            daneZabiegow=daneZabiegow.filter(zabieg=>zabieg.id!=aktualnyZabieg.id);
+            listaZabiegow=listaZabiegow.filter(zabieg=>zabieg.id!=aktualnyZabieg.id);
             wypelnijListeZabiegow();
             przelaczStrone("zabiegi");
         }
@@ -42,13 +42,13 @@ function wypelnijListePacjentow() {
     const tabelaPacjentow = document.querySelector("#klienci tbody");
     tabelaPacjentow.innerHTML = "";
     const templateWiersz = document.querySelector("#wiersz_klienci").content;
-    daneKlientów.forEach(pacjent => {
+    listaKlientów.forEach(pacjent => {
         const templateTR = templateWiersz.querySelector("tr");
         const wiersz = templateWiersz.cloneNode(true);
         const komorki = wiersz.querySelectorAll("td span");
-        komorki[0].textContent = pacjent.Imie;
-        komorki[1].textContent = pacjent.Nazwisko;
-        komorki[2].textContent = pacjent.Tel;
+        komorki[0].textContent = pacjent.imie;
+        komorki[1].textContent = pacjent.nazwisko;
+        komorki[2].textContent = pacjent.tel;
         wiersz.querySelector("tr").addEventListener("click", ev => {
           wyswietlSzczegolyPacjenta(pacjent)
         })
@@ -61,11 +61,11 @@ function wypelnijListePacjentow() {
   function wyswietlSzczegolyPacjenta(pacjent) {
     aktualnyPacjent = pacjent;
     const szczegolyImie = document.querySelector("#szczegoly_imie");
-    szczegolyImie.value = pacjent.Imie;
+    szczegolyImie.value = pacjent.imie;
     const szczegolyNazwisko = document.querySelector("#szczegoly_nazwisko");
-    szczegolyNazwisko.value = pacjent.Nazwisko;
+    szczegolyNazwisko.value = pacjent.nazwisko;
     const szczegolyTelefon = document.querySelector("#szczegoly_telefon");
-    szczegolyTelefon.value = pacjent.Tel;
+    szczegolyTelefon.value = pacjent.tel;
     const sekcjaKlienci = document.querySelector("#klienci");
     sekcjaKlienci.hidden = true;
     const sekcjaSzczegoly = document.querySelector("#klient_szczegoly");
@@ -76,7 +76,7 @@ function wypelnijListePacjentow() {
     const tabelaZabiegow = document.querySelector("#zabiegi tbody");
     tabelaZabiegow.innerHTML = "";
     const templateWiersz = document.querySelector("#wiersz_zabiegi").content;
-    daneZabiegow.forEach(zabieg => {
+    listaZabiegow.forEach(zabieg => {
         const templateTR = templateWiersz.querySelector("tr");
         const wiersz = templateWiersz.cloneNode(true);
         const komorki = wiersz.querySelectorAll("td span");
@@ -105,30 +105,9 @@ function wypelnijListePacjentow() {
     sekcjaSzczegoly.hidden = false;
   }
 
-  let daneKlientów = [
-    { "id": "1",
-      "Imie": "Wojciech",
-      "Nazwisko": "Olejarz",
-      "Tel": "121223"},
-     {"id": "2",
-      "Imie": "Magdalena",
-     "Nazwisko": "Goszkowska",
-     "Tel": "45093409"},
-     {"id": "3",
-      "Imie": "Aleksandra",
-     "Nazwisko": "Olejarz",
-     "Tel": "7054094"},
-     {"id": "4",
-      "Imie": "Zbigniew",
-     "Nazwisko": "Jabłoński",
-     "Tel": "09845809"},
-     {"id": "5",
-      "Imie": "Beata",
-     "Nazwisko": "Olejarz",
-     "Tel": "094580934"},
-  ]
+  let listaKlientów = [];
 
-  let daneZabiegow = [
+  let listaZabiegow = [
     { "id": "1",
       "Nazwa": "Zabieg1",
       "Czasochlonnosc": "30",
