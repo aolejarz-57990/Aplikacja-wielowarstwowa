@@ -1,4 +1,5 @@
 function initializujStrone() {
+  // podpięcie handlerów do eventów
     document.querySelector("#btn_klienci").addEventListener("click",()=>{
         wypelnijListeKlientow();
         przelaczStrone("klienci");
@@ -58,6 +59,25 @@ function initializujStrone() {
         );
       });
     })
+    document.querySelector("#btn_powrot_dodaj_klienta").addEventListener("click",()=>{
+        przelaczStrone("klienci");
+    });
+    document.querySelector("#btn_zapisz_klienta").addEventListener("click",()=>{
+        const klient = {
+          imie: document.querySelector("#szczegoly_imie").value,
+          nazwisko: document.querySelector("#szczegoly_nazwisko").value,
+          tel: document.querySelector("#szczegoly_telefon").value
+        }
+        aktualizujElement("klienci",klient,() => {
+          pobierzListeElementow("klienci", klienci => {
+            listaKlientow = klienci;
+            wypelnijListeKlientow();
+            przelaczStrone("klienci");
+            }
+          );
+        });
+    }
+  );
 }
       
 function wypelnijListeKlientow() {
