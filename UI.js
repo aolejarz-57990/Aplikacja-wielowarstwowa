@@ -49,8 +49,9 @@ function initializujStrone() {
         tel: document.querySelector("#nowy_klient_tel").value
       }
       document.querySelector("#dodaj_klienta_submit").hidden = true;
-      dodajKlienta(klient,() => {
-        pobierzKlientow( () => {
+      dodajElement("klienci",klient,() => {
+        pobierzListeElementow("klienci", klienci => {
+          listaKlientow = klienci;
           wypelnijListeKlientow();
           przelaczStrone("klienci");
           }
