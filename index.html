@@ -16,10 +16,22 @@
         flex-direction: row;
         justify-content: center;
       }
-      button {
+      button, input[type=submit] {
         margin: 5px;
         font-size: large;
         font-family:Verdana, Geneva, Tahoma, sans-serif;
+        padding:5px 15px; 
+        background:#ccc; 
+        border:0 none;
+        cursor:pointer;
+        -webkit-border-radius: 5px;
+        border-radius: 5px; 
+      }
+      input {
+        margin: 3px;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid black;
       }
       table, th, td {
         border: 1px solid black;
@@ -43,6 +55,7 @@
         justify-content: space-between;
         width: 300px;
       }
+    
     </style>
   </head>
   <body>
@@ -169,6 +182,7 @@
               <input type="text" id="nowy_klient_tel" name="nowy_klient_tel" required>
             </span>
             <input id="dodaj_klienta_submit" type="submit" value="Zapisz">
+            <button id="btn_powrot_dodaj_klienta" type="button">Powrót</button>
           </div>
         </form>
       </section>
