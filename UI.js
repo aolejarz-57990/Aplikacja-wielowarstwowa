@@ -62,7 +62,7 @@ function initializujStrone() {
     document.querySelector("#btn_powrot_dodaj_klienta").addEventListener("click",()=>{
         przelaczStrone("klienci");
     });
-    document.querySelector("#btn_zapisz_klienta").addEventListener("click",()=>{
+    document.querySelector("#btn_zapisz_klienci").addEventListener("click",()=>{
         const klient = {
           imie: document.querySelector("#szczegoly_imie").value,
           nazwisko: document.querySelector("#szczegoly_nazwisko").value,
@@ -76,8 +76,10 @@ function initializujStrone() {
             }
           );
         });
-    }
-  );
+    });
+    document.querySelector("#btn_dodaj_klienta_powrot").addEventListener("click",()=>{
+      przelaczStrone("menu_glowne");
+  }); 
 }
       
 function wypelnijListeKlientow() {
