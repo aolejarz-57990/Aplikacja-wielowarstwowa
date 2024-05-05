@@ -69,71 +69,7 @@ function usunElement(kolekcja, elementId,onSuccess) {
     })
 }
 
-
-function pobierzKlientow(onSuccess) {
-    settings.method = "GET";
-    settings.url = url+"klienci";
-    $.ajax(settings).done( response => {
-        listaKlientow = response;
-        if(typeof(onSuccess)=="function") {
-            onSuccess();
-        }
-    })     
-};
-
-function dodajKlienta(klient,onSuccess) { 
-    settings.method = "POST";
-    settings.url = url+"klienci";
-    settings.processData = false;
-    settings.data = JSON.stringify(klient);     
-    $.ajax(settings).done( response => {
-        if(typeof(onSuccess)=="function") {
-            onSuccess(response);
-        }
-    })
-}
-
-function pobierzKlienta(kleintId) {
-}
-
-function aktualizujKlienta(klient) {
-}
-
-function usunKlienta(klientId) {
-}
-
-// Obsługa kolekcji zabiegów
-function pobierzZabiegi() {
-}
-
-function dodajZabieg(zabieg) {
-}
-
-function pobierzZabieg(zabiegId) {
-}
-
-function aktualizujZabieg(zabieg) {
-}
-
-function usunZabieg(zabiegId) {
-}
-
-// Obsługa zamówień
-
-function pobierzZamowienia() {
-}
-
-function dodajZamowienie(zamowienie) {
-}
-
-function pobierzZamowienie(zamowienieId) {
-}
-
-function aktualizujZamowienie(zamowienie) {
-}
-
-function usunZamowienie(zamowienieId) {
-}
+// Klasy do obsługi danych
 
 class Klient {
     id;
