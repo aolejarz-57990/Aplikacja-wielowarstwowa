@@ -40,7 +40,7 @@ function initializujStrone() {
         document.querySelector("#dodaj_klienta_submit").hidden = false;
         przelaczStrone("dodaj_klienta");
     })
-    document.querySelector("#dodaj_klienta_submit").addEventListener("click", ev => {
+    document.querySelector("#dodaj_klienta form").addEventListener("submit", ev => {
       ev.preventDefault();
       ev.stopPropagation();
       const klient = {
