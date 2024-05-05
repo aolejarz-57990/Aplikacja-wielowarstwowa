@@ -14,7 +14,62 @@ const settings = {
     }
   }
 
-// Obsługa kolekcji klientów
+// Obsługa kolekcji
+function pobierzListeElementow(kolekcja, onSuccess) {
+    settings.method = "GET";
+    settings.url = url+kolekcja;
+    $.ajax(settings).done( response => {
+        if(typeof(onSuccess)=="function") {
+            onSuccess(response);
+        }
+    })
+}
+
+function dodajElement(kolekcja, element, onSuccess) {
+    settings.method = "POST";
+    settings.url = url+kolekcja;
+    settings.processData = false;
+    settings.data = JSON.stringify(element);
+    $.ajax(settings).done( response => {
+        if(typeof(onSuccess)=="function") {
+            onSuccess(response);
+        }
+    })
+}
+
+function pobierzElement(kolekcja, elementId, onSuccess) {
+    settings.method = "GET";
+    settings.url = url+kolekcja+"/"+elementId;
+    $.ajax(settings).done( response => {
+        if(typeof(onSuccess)=="function") {
+            onSuccess(response);
+        }
+    })
+}
+
+function aktualizujElement(kolekcja, element, onSuccess) {
+    settings.method = "PUT";
+    settings.url = url+kolekcja+"/"+element.id;
+    settings.data = JSON.stringify(element);
+    $.ajax(settings).done( response => {
+        if(typeof(onSuccess)=="function") {
+            onSuccess(response);
+        }
+    });
+}
+
+
+function usunElement(kolekcja, elementId,onSuccess) {
+    settings.method = "DELETE";
+    settings.url = url+kolekcja+"/"+elementId;
+    $.ajax(settings).done( response => {
+        if(typeof(onSuccess)=="function") {
+            onSuccess(response);
+        }
+    })
+}
+
+
 function pobierzKlientow(onSuccess) {
     settings.method = "GET";
     settings.url = url+"klienci";
