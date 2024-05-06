@@ -152,23 +152,7 @@
           <div>
             <button id="btn_zapisz_klienci" type="button">Zapisz</button>
             <button id="btn_usun_klienci" type="button">Usuń</button>
-            <button id="btn_powrot_klienci" type="button">Powrót</button>
-          </div>
-        </div>
-      </section>
-      <section id="zabieg_szczegoly" hidden>
-        <div>
-          <h2 class="wysrodkuj">Szczegóły</h2>
-          <div>Nazwa</div>
-          <input id="szczegoly_nazwa" type="text">
-          <div>Czasochłonność</div>
-          <input id="szczegoly_czas" type="number">
-          <div>Opis</div>
-          <input id="szczegoly_opis" type="textarea">
-          <div>
-            <button id="btn_zapisz_zabiegi" type="button">Zapisz</button>
-            <button id="btn_usun_zabiegi" type="button">Usuń</button>
-            <button id="btn_powrot_zabiegi" type="button">Powrót</button>
+            <button id="btn_powrot_szczegoly_klienta" type="button">Powrót</button>
           </div>
         </div>
       </section>
@@ -194,6 +178,28 @@
             </span>
           </div>
         </form>
+      </section>
+      <section id="zabieg_szczegoly" hidden>
+        <div class="srodek">
+          <h2 class="wysrodkuj">Szczegóły</h2>
+          <span class="spread" >
+            <label for="szczegoly_nazwa">Nazwa:</label>
+            <input id="szczegoly_nazwa" type="text">
+          </span>
+          <span class="spread" >
+            <label for="szczegoly_czas">Czasochłonność:</label>
+            <input id="szczegoly_czas" type="number">
+          </span>
+          <span class="spread" >
+            <label for="szczegoly_opis">Opis:</label>
+            <input id="szczegoly_opis" type="textarea">
+          </span>
+          <div>
+            <button id="btn_zapisz_zabiegi" type="button">Zapisz</button>
+            <button id="btn_usun_zabiegi" type="button">Usuń</button>
+            <button id="btn_powrot_szczegoly_zabiegu" type="button">Powrót</button>
+          </div>
+        </div>
       </section>
       <section id="dodaj_zabieg" hidden>
         <form>
@@ -243,6 +249,7 @@
       { 
         initializujStrone();
         pobierzListeElementow("klienci", klienci => listaKlientow = klienci);
+        pobierzListeElementow("zabiegi", zabiegi => listaZabiegow = zabiegi);
       })
     </script>
   </body>
