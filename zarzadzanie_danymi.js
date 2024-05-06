@@ -49,7 +49,7 @@ function pobierzElement(kolekcja, elementId, onSuccess) {
 
 function aktualizujElement(kolekcja, element, onSuccess) {
     settings.method = "PUT";
-    settings.url = url+kolekcja+"/"+element.id;
+    settings.url = url+kolekcja+"/"+element._id;
     settings.data = JSON.stringify(element);
     $.ajax(settings).done( response => {
         if(typeof(onSuccess)=="function") {
