@@ -83,6 +83,7 @@
           <button id="btn_klienci" type="button">KLIENCI</button> 
           <button id="btn_zabiegi" type="button">ZABIEGI</button>
           <button id="btn_kalendarz" type="button">KALENDARZ</button>
+          <button id="btn_ustawienia" type="button">USTAWIENIA</button>
         </div>
       </section>
 
@@ -131,7 +132,18 @@
       </section>
 
       <section id="kalendarz" hidden>
-        <h2>KALENDARZ ZABIEGÓW</h2>
+        <h2 class="wysrodkuj">KALENDARZ ZABIEGÓW</h2>
+      </section>
+
+      <section id="ustawienia" hidden>
+        <h2 class="wysrodkuj"> USTAWIENIA</h2>
+        <div class="srodek">
+          <span class="spread" >
+            <label for="haslo_do_DB">Kod dostępu do bazy danych:</label>
+            <input type="password" id="haslo_do_DB">
+          </span>
+          <button id="btn_powrot_ustawienia" type="button">Powrót</button>
+        </div>
       </section>
 
       <section id="klient_szczegoly" hidden>
@@ -240,7 +252,6 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="UI.js"></script>
-    <script src="passcode.js"></script>
     <script src="zarzadzanie_danymi.js"></script>
     <script>
       let aktualnyKlient = null;
@@ -248,8 +259,6 @@
       window.addEventListener("load", () => 
       { 
         initializujStrone();
-        pobierzListeElementow("klienci", klienci => listaKlientow = klienci);
-        pobierzListeElementow("zabiegi", zabiegi => listaZabiegow = zabiegi);
       })
     </script>
   </body>
