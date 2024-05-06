@@ -1,6 +1,7 @@
 //Uzyskanie dostepu do bazy danych
 const encryptedAPIkey = "U2FsdGVkX18Ikhl8uGAj3j/+XdcYdUjGGbomZZUPR2BZyAPaVIXPGpNJFlr+OPjxiwWvRlQ6wnnlqqUXMtXN4w==";
-const APIkey = decrypt(encryptedAPIkey,passcode);
+let passcode = "";
+let APIkey = "";
 const url = "https://aplikacja-ac0d.restdb.io/rest/";
 const settings = {
     "async": true,

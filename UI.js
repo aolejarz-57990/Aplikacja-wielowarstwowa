@@ -12,6 +12,20 @@ function initializujStrone() {
   document.querySelector("#btn_kalendarz").addEventListener("click",()=>{
       przelaczStrone("kalendarz")
   });
+  document.querySelector("#btn_ustawienia").addEventListener("click",()=>{
+      przelaczStrone("ustawienia")
+  });
+  document.querySelector("#btn_powrot_ustawienia").addEventListener("click",()=>{
+    passcode = document.querySelector("#haslo_do_DB").value;
+    APIkey = decrypt(encryptedAPIkey,passcode);
+    settings.headers["x-apikey"] = APIkey;
+    pobierzListeElementow("klienci", klienci => listaKlientow = klienci);
+    pobierzListeElementow("zabiegi", zabiegi => {
+      listaZabiegow = zabiegi;
+      przelaczStrone("menu_glowne");
+    
+    });
+  });
   // Klienci
   document.querySelector("#btn_dodaj_klienta").addEventListener("click",() => {
       document.querySelector("#dodaj_klienta_submit").hidden = false;
@@ -190,7 +204,7 @@ function wypelnijListeKlientow() {
   let listaZabiegow = [];
 
   const sekcje = ["menu_glowne","klienci","zabiegi","kalendarz","klient_szczegoly",
-  "zabieg_szczegoly","dodaj_klienta","dodaj_zabieg"]
+  "zabieg_szczegoly","dodaj_klienta","dodaj_zabieg","ustawienia"]
 
   function przelaczStrone(strona) { 
     sekcje.forEach(sekcja => { 
