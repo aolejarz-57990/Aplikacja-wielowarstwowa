@@ -1,16 +1,41 @@
 function initializujStrone() {
   // podpięcie handlerów do eventów
-    document.querySelector("#btn_klienci").addEventListener("click",()=>{
-        wypelnijListeKlientow();
-        przelaczStrone("klienci");
-    });
-    document.querySelector("#btn_zabiegi").addEventListener("click",()=>{
-        przelaczStrone("zabiegi");
-        wypelnijListeZabiegow();
-    });
-    document.querySelector("#btn_kalendarz").addEventListener("click",()=>{
-       przelaczStrone("kalendarz")
-    });
+  // Menu główne
+  document.querySelector("#btn_klienci").addEventListener("click",()=>{
+      wypelnijListeKlientow();
+      przelaczStrone("klienci");
+  });
+  document.querySelector("#btn_zabiegi").addEventListener("click",()=>{
+      przelaczStrone("zabiegi");
+      wypelnijListeZabiegow();
+  });
+  document.querySelector("#btn_kalendarz").addEventListener("click",()=>{
+      przelaczStrone("kalendarz")
+  });
+  // Klienci
+  document.querySelector("#btn_dodaj_klienta").addEventListener("click",() => {
+      document.querySelector("#dodaj_klienta_submit").hidden = false;
+      przelaczStrone("dodaj_klienta");
+  })
+  document.querySelector("#btn_powrot_klienci").addEventListener("click",()=>{
+          przelaczStrone("menu_glowne");
+      });
+  document.querySelector("#btn_zapisz_klienci").addEventListener("click",()=>{
+      const klient = {
+        _id: aktualnyKlient._id,
+        imie: document.querySelector("#szczegoly_imie").value,
+        nazwisko: document.querySelector("#szczegoly_nazwisko").value,
+        tel: document.querySelector("#szczegoly_telefon").value
+      }
+      aktualizujElement("klienci",klient,() => {
+        pobierzListeElementow("klienci", klienci => {
+          listaKlientow = klienci;
+          wypelnijListeKlientow();
+          przelaczStrone("klienci");
+          }
+        );
+      });
+  });
     document.querySelector("#btn_usun_klienci").addEventListener("click",()=>{
         if (confirm("Czy na pewno chcesz usunąć pacjenta?")){
             listaKlientow=listaKlientow.filter(klient=>klient._id!=aktualnyKlient._id);
@@ -18,7 +43,7 @@ function initializujStrone() {
             przelaczStrone("klienci");
         }
     });
-    document.querySelector("#dodaj_klienta form").addEventListener("submit", ev => {
+   document.querySelector("#dodaj_klienta form").addEventListener("submit", ev => {
       ev.preventDefault();
       ev.stopPropagation();
       const klient = {
@@ -35,10 +60,10 @@ function initializujStrone() {
           }
         );
       });
-    })
-    document.querySelector("#btn_powrot_dodaj_klienta").addEventListener("click",()=>{
-        przelaczStrone("klienci");
-    });
+    }) 
+  document.querySelector("#btn_powrot_dodaj_klienta").addEventListener("click",()=>{
+      przelaczStrone("klienci");
+  });
 
   // Zabiegi
   document.querySelector("#btn_dodaj_zabieg").addEventListener("click",() => {
@@ -54,16 +79,16 @@ function initializujStrone() {
       Nazwa: document.querySelector("#szczegoly_nazwa").value,
       Czasochlonnosc: document.querySelector("#szczegoly_czas").value,
       Opis: document.querySelector("#szczegoly_opis").value
-        }
+    }
     aktualizujElement("zabiegi",zabieg,() => {
       pobierzListeElementow("zabiegi", zabiegi => {
         listaZabiegow = zabiegi;
         wypelnijListeZabiegow();
         przelaczStrone("zabiegi");
-            }
-          );
-        });
-    });
+        }
+      );
+    }); 
+  });
   document.querySelector("#btn_usun_zabiegi").addEventListener("click",()=>{
       if (confirm("Czy na pewno chcesz usunąć zabieg?")){
           listaZabiegow=listaZabiegow.filter(zabieg=>zabieg._id!=aktualnyZabieg._id);
@@ -91,7 +116,7 @@ function initializujStrone() {
   })
   document.querySelector("#btn_powrot_dodaj_zabieg").addEventListener("click",()=>{
     przelaczStrone("zabiegi");
-  }); 
+  });  
 }
       
 function wypelnijListeKlientow() {
@@ -185,7 +210,8 @@ function wypelnijListeKlientow() {
      "Czasochlonnosc": "60",
       "Opis": "Opis zabiegu5"},
   ]
-  const sekcje = ["menu_glowne","klienci","zabiegi","kalendarz","klient_szczegoly","zabieg_szczegoly","dodaj_klienta"]
+  const sekcje = ["menu_glowne","klienci","zabiegi","kalendarz","klient_szczegoly",
+  "zabieg_szczegoly","dodaj_klienta","dodaj_zabieg"]
 
   function przelaczStrone(strona) { 
     sekcje.forEach(sekcja => { 
