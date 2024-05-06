@@ -20,11 +20,8 @@ function initializujStrone() {
     APIkey = decrypt(encryptedAPIkey,passcode);
     settings.headers["x-apikey"] = APIkey;
     pobierzListeElementow("klienci", klienci => listaKlientow = klienci);
-    pobierzListeElementow("zabiegi", zabiegi => {
-      listaZabiegow = zabiegi;
+    pobierzListeElementow("zabiegi", zabiegi => listaZabiegow = zabiegi);
       przelaczStrone("menu_glowne");
-    
-    });
   });
   // Klienci
   document.querySelector("#btn_dodaj_klienta").addEventListener("click",() => {
