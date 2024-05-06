@@ -13,7 +13,7 @@ function initializujStrone() {
     });
     document.querySelector("#btn_usun_klienci").addEventListener("click",()=>{
         if (confirm("Czy na pewno chcesz usunąć pacjenta?")){
-            listaKlientow=listaKlientow.filter(pacjent=>pacjent._id!=aktualnyPacjent._id);
+            listaKlientow=listaKlientow.filter(klient=>klient._id!=aktualnyKlient._id);
             wypelnijListeKlientow();
             przelaczStrone("klienci");
         }
@@ -61,6 +61,7 @@ function initializujStrone() {
     });
     document.querySelector("#btn_zapisz_klienci").addEventListener("click",()=>{
         const klient = {
+          _id: aktualnyKlient._id,
           imie: document.querySelector("#szczegoly_imie").value,
           nazwisko: document.querySelector("#szczegoly_nazwisko").value,
           tel: document.querySelector("#szczegoly_telefon").value
@@ -83,15 +84,15 @@ function wypelnijListeKlientow() {
     const tabelaPacjentow = document.querySelector("#klienci tbody");
     tabelaPacjentow.innerHTML = "";
     const templateWiersz = document.querySelector("#wiersz_klienci").content;
-    listaKlientow.forEach(pacjent => {
+    listaKlientow.forEach(klient => {
         const templateTR = templateWiersz.querySelector("tr");
         const wiersz = templateWiersz.cloneNode(true);
         const komorki = wiersz.querySelectorAll("td span");
-        komorki[0].textContent = pacjent.imie;
-        komorki[1].textContent = pacjent.nazwisko;
-        komorki[2].textContent = pacjent.tel;
+        komorki[0].textContent = klient.imie;
+        komorki[1].textContent = klient.nazwisko;
+        komorki[2].textContent = klient.tel;
         wiersz.querySelector("tr").addEventListener("click", ev => {
-          wyswietlSzczegolyPacjenta(pacjent)
+          wyswietlSzczegolyKlienta(klient)
         })
         tabelaPacjentow.appendChild(wiersz);
       }
@@ -99,14 +100,14 @@ function wypelnijListeKlientow() {
 
   }
 
-  function wyswietlSzczegolyPacjenta(pacjent) {
-    aktualnyPacjent = pacjent;
+  function wyswietlSzczegolyKlienta(klient) {
+    aktualnyKlient = klient;
     const szczegolyImie = document.querySelector("#szczegoly_imie");
-    szczegolyImie.value = pacjent.imie;
+    szczegolyImie.value = klient.imie;
     const szczegolyNazwisko = document.querySelector("#szczegoly_nazwisko");
-    szczegolyNazwisko.value = pacjent.nazwisko;
+    szczegolyNazwisko.value = klient.nazwisko;
     const szczegolyTelefon = document.querySelector("#szczegoly_telefon");
-    szczegolyTelefon.value = pacjent.tel;
+    szczegolyTelefon.value = klient.tel;
     const sekcjaKlienci = document.querySelector("#klienci");
     sekcjaKlienci.hidden = true;
     const sekcjaSzczegoly = document.querySelector("#klient_szczegoly");
