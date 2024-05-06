@@ -141,16 +141,11 @@ function wypelnijListeKlientow() {
 
   function wyswietlSzczegolyKlienta(klient) {
     aktualnyKlient = klient;
-    const szczegolyImie = document.querySelector("#szczegoly_imie");
-    szczegolyImie.value = klient.imie;
-    const szczegolyNazwisko = document.querySelector("#szczegoly_nazwisko");
-    szczegolyNazwisko.value = klient.nazwisko;
-    const szczegolyTelefon = document.querySelector("#szczegoly_telefon");
-    szczegolyTelefon.value = klient.tel;
-    const sekcjaKlienci = document.querySelector("#klienci");
-    sekcjaKlienci.hidden = true;
-    const sekcjaSzczegoly = document.querySelector("#klient_szczegoly");
-    sekcjaSzczegoly.hidden = false;
+    document.querySelector("#szczegoly_imie").value = klient.imie;
+    document.querySelector("#szczegoly_nazwisko").value = klient.nazwisko;
+    document.querySelector("#szczegoly_telefon").value = klient.tel;
+    document.querySelector("#klienci").hidden = true;
+    document.querySelector("#klient_szczegoly").hidden = false;
   }
 
   function wypelnijListeZabiegow() {
@@ -174,16 +169,11 @@ function wypelnijListeKlientow() {
 
   function wyswietlSzczegolyZabiegu(zabieg) {
     aktualnyZabieg = zabieg;
-    const szczegolyNazwa = document.querySelector("#szczegoly_nazwa");
-    szczegolyNazwa.value = zabieg.Nazwa;
-    const szczegolyCzasochlonnosc = document.querySelector("#szczegoly_czas");
-    szczegolyCzasochlonnosc.value = zabieg.Czasochlonnosc;
-    const szczegolyOpis = document.querySelector("#szczegoly_opis");
-    szczegolyOpis.value = zabieg.Opis;
-    const sekcjaZabiegi = document.querySelector("#zabiegi");
-    sekcjaZabiegi.hidden = true;
-    const sekcjaSzczegoly = document.querySelector("#zabieg_szczegoly");
-    sekcjaSzczegoly.hidden = false;
+    document.querySelector("#szczegoly_nazwa").value = zabieg.nazwa;
+    document.querySelector("#szczegoly_czas").value = zabieg.czas;
+    document.querySelector("#szczegoly_opis").value = zabieg.opis;
+    document.querySelector("#zabiegi").hidden = true;
+    document.querySelector("#zabieg_szczegoly").hidden = false;
   }
 
   let listaKlientow = [];
