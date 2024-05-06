@@ -18,26 +18,6 @@ function initializujStrone() {
             przelaczStrone("klienci");
         }
     });
-    document.querySelector("#btn_powrot_klienci").addEventListener("click",()=>{
-        przelaczStrone("klienci");
-    });
-    document.querySelector("#btn_zapisz_zabiegi").addEventListener("click",()=>{
-        alert("Zapisano");
-    });
-    document.querySelector("#btn_usun_zabiegi").addEventListener("click",()=>{
-        if (confirm("Czy na pewno chcesz usunąć zabieg?")){
-            listaZabiegow=listaZabiegow.filter(zabieg=>zabieg.id!=aktualnyZabieg.id);
-            wypelnijListeZabiegow();
-            przelaczStrone("zabiegi");
-        }
-    });
-    document.querySelector("#btn_powrot_zabiegi").addEventListener("click",()=>{
-        przelaczStrone("zabiegi");
-    });
-    document.querySelector("#btn_dodaj_klienta").addEventListener("click",() => {
-        document.querySelector("#dodaj_klienta_submit").hidden = false;
-        przelaczStrone("dodaj_klienta");
-    })
     document.querySelector("#dodaj_klienta form").addEventListener("submit", ev => {
       ev.preventDefault();
       ev.stopPropagation();
@@ -59,24 +39,58 @@ function initializujStrone() {
     document.querySelector("#btn_powrot_dodaj_klienta").addEventListener("click",()=>{
         przelaczStrone("klienci");
     });
-    document.querySelector("#btn_zapisz_klienci").addEventListener("click",()=>{
-        const klient = {
-          _id: aktualnyKlient._id,
-          imie: document.querySelector("#szczegoly_imie").value,
-          nazwisko: document.querySelector("#szczegoly_nazwisko").value,
-          tel: document.querySelector("#szczegoly_telefon").value
+
+  // Zabiegi
+  document.querySelector("#btn_dodaj_zabieg").addEventListener("click",() => {
+    document.querySelector("#dodaj_zabieg_submit").hidden = false;
+    przelaczStrone("dodaj_zabieg");
+  });
+  document.querySelector("#btn_powrot_zabiegi").addEventListener("click",()=>{
+    przelaczStrone("menu_glowne");
+  });
+  document.querySelector("#btn_zapisz_zabiegi").addEventListener("click",()=>{
+    const zabieg = {
+      _id: aktualnyZabieg._id,
+      Nazwa: document.querySelector("#szczegoly_nazwa").value,
+      Czasochlonnosc: document.querySelector("#szczegoly_czas").value,
+      Opis: document.querySelector("#szczegoly_opis").value
         }
-        aktualizujElement("klienci",klient,() => {
-          pobierzListeElementow("klienci", klienci => {
-            listaKlientow = klienci;
-            wypelnijListeKlientow();
-            przelaczStrone("klienci");
+    aktualizujElement("zabiegi",zabieg,() => {
+      pobierzListeElementow("zabiegi", zabiegi => {
+        listaZabiegow = zabiegi;
+        wypelnijListeZabiegow();
+        przelaczStrone("zabiegi");
             }
           );
         });
     });
-    document.querySelector("#btn_dodaj_klienta_powrot").addEventListener("click",()=>{
-      przelaczStrone("menu_glowne");
+  document.querySelector("#btn_usun_zabiegi").addEventListener("click",()=>{
+      if (confirm("Czy na pewno chcesz usunąć zabieg?")){
+          listaZabiegow=listaZabiegow.filter(zabieg=>zabieg._id!=aktualnyZabieg._id);
+          wypelnijListeZabiegow();
+          przelaczStrone("zabiegi");
+      }
+  });
+  document.querySelector("#dodaj_zabieg form").addEventListener("submit", ev => {
+    ev.preventDefault();
+    ev.stopPropagation();
+    const zabieg = {
+      Nazwa: document.querySelector("#nowy_zabieg_nazwa").value,
+      Czasochlonnosc: document.querySelector("#nowy_zabieg_czas").value,
+      Opis: document.querySelector("#nowy_zabieg_opis").value
+    }
+    document.querySelector("#dodaj_zabieg_submit").hidden = true;
+    dodajElement("zabiegi",zabieg,() => {
+      pobierzListeElementow("zabiegi", zabiegi => {
+        listaZabiegow = zabiegi;
+        wypelnijListeZabiegow();
+        przelaczStrone("zabiegi");
+        }
+      );
+    });
+  })
+  document.querySelector("#btn_powrot_dodaj_zabieg").addEventListener("click",()=>{
+    przelaczStrone("zabiegi");
   }); 
 }
       
