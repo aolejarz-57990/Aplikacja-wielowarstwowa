@@ -19,11 +19,16 @@ const settings = {
 function pobierzListeElementow(kolekcja, onSuccess) {
     settings.method = "GET";
     settings.url = url+kolekcja;
-    $.ajax(settings).done( response => {
-        if(typeof(onSuccess)=="function") {
-            onSuccess(response);
-        }
-    })
+    try {
+        $.ajax(settings).done( response => {
+            if(typeof(onSuccess)=="function") {
+                onSuccess(response);
+            }
+        })
+    }
+    catch(e) {
+        console.log(e);
+    }
 }
 
 function dodajElement(kolekcja, element, onSuccess) {
@@ -31,43 +36,63 @@ function dodajElement(kolekcja, element, onSuccess) {
     settings.url = url+kolekcja;
     settings.processData = false;
     settings.data = JSON.stringify(element);
-    $.ajax(settings).done( response => {
-        if(typeof(onSuccess)=="function") {
-            onSuccess(response);
-        }
-    })
+    try {
+        $.ajax(settings).done( response => {
+            if(typeof(onSuccess)=="function") {
+                onSuccess(response);
+            }
+        });
+    }
+    catch(e) {
+        console.log(e);
+    }
 }
 
 function pobierzElement(kolekcja, elementId, onSuccess) {
     settings.method = "GET";
     settings.url = url+kolekcja+"/"+elementId;
-    $.ajax(settings).done( response => {
-        if(typeof(onSuccess)=="function") {
-            onSuccess(response);
-        }
-    })
+    try {
+        $.ajax(settings).done( response => {
+            if(typeof(onSuccess)=="function") {
+                onSuccess(response);
+            }
+        })
+    }
+    catch(e) {
+        console.log(e);
+    }
 }
 
 function aktualizujElement(kolekcja, element, onSuccess) {
     settings.method = "PUT";
     settings.url = url+kolekcja+"/"+element._id;
     settings.data = JSON.stringify(element);
-    $.ajax(settings).done( response => {
-        if(typeof(onSuccess)=="function") {
-            onSuccess(response);
-        }
-    });
+    try {
+        $.ajax(settings).done( response => {
+            if(typeof(onSuccess)=="function") {
+                onSuccess(response);
+            }
+        });
+    }
+    catch(e) {
+        console.log(e);
+    }
 }
 
 
 function usunElement(kolekcja, elementId,onSuccess) {
     settings.method = "DELETE";
     settings.url = url+kolekcja+"/"+elementId;
-    $.ajax(settings).done( response => {
-        if(typeof(onSuccess)=="function") {
-            onSuccess(response);
-        }
-    })
+    try {
+        $.ajax(settings).done( response => {
+            if(typeof(onSuccess)=="function") {
+                onSuccess(response);
+            }
+        });
+    }
+    catch(e) {
+        console.log(e);
+    }
 }
 
 // Klasy do obsługi danych
@@ -98,5 +123,10 @@ function encrypt(content, password) {
 }
 
 function decrypt(crypted, password) {
-    return JSON.parse(CryptoJS.AES.decrypt(crypted, password).toString(CryptoJS.enc.Utf8)).content;
+    try {
+        return JSON.parse(CryptoJS.AES.decrypt(crypted, password).toString(CryptoJS.enc.Utf8)).content;
+    }
+    catch(e) {
+        return "";
+    }
 }
