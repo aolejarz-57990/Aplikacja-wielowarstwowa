@@ -11,9 +11,6 @@ function initializujStrone() {
     document.querySelector("#btn_kalendarz").addEventListener("click",()=>{
        przelaczStrone("kalendarz")
     });
-    document.querySelector("#btn_zapisz_klienci").addEventListener("click",()=>{
-        alert("Zapisano");
-    });
     document.querySelector("#btn_usun_klienci").addEventListener("click",()=>{
         if (confirm("Czy na pewno chcesz usunąć pacjenta?")){
             listaKlientow=listaKlientow.filter(pacjent=>pacjent._id!=aktualnyPacjent._id);
