@@ -39,8 +39,10 @@ function initializujStrone() {
     document.querySelector("#btn_usun_klienci").addEventListener("click",()=>{
         if (confirm("Czy na pewno chcesz usunąć pacjenta?")){
             listaKlientow=listaKlientow.filter(klient=>klient._id!=aktualnyKlient._id);
-            wypelnijListeKlientow();
-            przelaczStrone("klienci");
+            usunElement("klienci",aktualnyKlient._id,() => {
+              wypelnijListeKlientow();
+              przelaczStrone("klienci");
+            });
         }
     });
    document.querySelector("#dodaj_klienta form").addEventListener("submit", ev => {
@@ -64,6 +66,9 @@ function initializujStrone() {
   document.querySelector("#btn_powrot_dodaj_klienta").addEventListener("click",()=>{
       przelaczStrone("klienci");
   });
+  document.querySelector("#btn_powrot_szczegoly_klienta").addEventListener("click",()=>{
+    przelaczStrone("klienci");
+  });
 
   // Zabiegi
   document.querySelector("#btn_dodaj_zabieg").addEventListener("click",() => {
@@ -76,9 +81,9 @@ function initializujStrone() {
   document.querySelector("#btn_zapisz_zabiegi").addEventListener("click",()=>{
     const zabieg = {
       _id: aktualnyZabieg._id,
-      Nazwa: document.querySelector("#szczegoly_nazwa").value,
-      Czasochlonnosc: document.querySelector("#szczegoly_czas").value,
-      Opis: document.querySelector("#szczegoly_opis").value
+      nazwa: document.querySelector("#szczegoly_nazwa").value,
+      czas: document.querySelector("#szczegoly_czas").value,
+      opis: document.querySelector("#szczegoly_opis").value
     }
     aktualizujElement("zabiegi",zabieg,() => {
       pobierzListeElementow("zabiegi", zabiegi => {
@@ -91,18 +96,20 @@ function initializujStrone() {
   });
   document.querySelector("#btn_usun_zabiegi").addEventListener("click",()=>{
       if (confirm("Czy na pewno chcesz usunąć zabieg?")){
-          listaZabiegow=listaZabiegow.filter(zabieg=>zabieg._id!=aktualnyZabieg._id);
+        listaZabiegow=listaZabiegow.filter(zabieg=>zabieg._id!=aktualnyZabieg._id);
+        usunElement("zabiegi",aktualnyZabieg._id,() => {
           wypelnijListeZabiegow();
           przelaczStrone("zabiegi");
+        });
       }
   });
   document.querySelector("#dodaj_zabieg form").addEventListener("submit", ev => {
     ev.preventDefault();
     ev.stopPropagation();
     const zabieg = {
-      Nazwa: document.querySelector("#nowy_zabieg_nazwa").value,
-      Czasochlonnosc: document.querySelector("#nowy_zabieg_czas").value,
-      Opis: document.querySelector("#nowy_zabieg_opis").value
+      nazwa: document.querySelector("#nowy_zabieg_nazwa").value,
+      czas: document.querySelector("#nowy_zabieg_czas").value,
+      opis: document.querySelector("#nowy_zabieg_opis").value
     }
     document.querySelector("#dodaj_zabieg_submit").hidden = true;
     dodajElement("zabiegi",zabieg,() => {
@@ -117,6 +124,9 @@ function initializujStrone() {
   document.querySelector("#btn_powrot_dodaj_zabieg").addEventListener("click",()=>{
     przelaczStrone("zabiegi");
   });  
+  document.querySelector("#btn_powrot_szczegoly_zabiegu").addEventListener("click",()=>{
+    przelaczStrone("zabiegi");
+  });
 }
       
 function wypelnijListeKlientow() {
@@ -156,9 +166,9 @@ function wypelnijListeKlientow() {
         const templateTR = templateWiersz.querySelector("tr");
         const wiersz = templateWiersz.cloneNode(true);
         const komorki = wiersz.querySelectorAll("td span");
-        komorki[0].textContent = zabieg.Nazwa;
-        komorki[1].textContent = zabieg.Czasochlonnosc;
-        komorki[2].textContent = zabieg.Opis;
+        komorki[0].textContent = zabieg.nazwa;
+        komorki[1].textContent = zabieg.czas;
+        komorki[2].textContent = zabieg.opis;
         wiersz.querySelector("tr").addEventListener("click", ev => {
           wyswietlSzczegolyZabiegu(zabieg)
         })
