@@ -21,6 +21,7 @@ function initializujStrone() {
     settings.headers["x-apikey"] = APIkey;
     pobierzListeElementow("klienci", klienci => listaKlientow = klienci);
     pobierzListeElementow("zabiegi", zabiegi => listaZabiegow = zabiegi);
+    pobierzListeElementow("zamowienia", wizyty => listaWizyt = wizyty);
       przelaczStrone("menu_glowne");
   });
   // Klienci
@@ -220,11 +221,59 @@ function wypelnijListeKlientow() {
     document.querySelector("#zabieg_szczegoly").hidden = false;
   }
 
+  function wypelnijListeWizyt() {
+    const tabelaWizyt = document.querySelector("#kalendarz tbody");
+    tabelaWizyt.innerHTML = "";
+    const templateWiersz = document.querySelector("#wiersz_zabiegi").content;
+    listaWizyt.forEach(wizyta => {
+        const templateTR = templateWiersz.querySelector("tr");
+        const wiersz = templateWiersz.cloneNode(true);
+        const komorki = wiersz.querySelectorAll("td span");
+        komorki[0].textContent = wizyta.termin;
+        komorki[1].textContent = wizyta.klient;
+        komorki[2].textContent = wizyta.zabieg;
+        tabelaWizyt.appendChild(wiersz);
+      }
+    )
+  }
+
+  function wyswietlSzczegolyWizyty(wizyta) {
+    aktualnaWizyta = wizyta;
+    document.querySelector("#wizyta_termin").value = wizyta.termin;
+    document.querySelector("#wizyta_klient").value = wizyta.klient;
+    document.querySelector("#wizyta_zabieg").value = wizyta.zabieg;
+    document.querySelector("#kalendarz").hidden = true;
+    document.querySelector("#wizyta_szczegoly").hidden = false;
+  }
+
+  function tworzListeKlientow() {
+    const selectKlient = document.querySelector("#nowa_wizyta_klient");
+    selectKlient.innerHTML = "";
+    listaKlientow.forEach(klient => {
+      const option = document.createElement("option");
+      option.value = klient._id;
+      option.textContent = klient.imie + " " + klient.nazwisko;
+      selectKlient.appendChild(option);
+    })
+  }
+
+  function tworzListeZabiegow() {
+    const selectZabieg = document.querySelector("#nowa_wizyta_zabieg");
+    selectZabieg.innerHTML = "";
+    listaZabiegow.forEach(zabieg => {
+      const option = document.createElement("option");
+      option.value = zabieg._id;
+      option.textContent = zabieg.nazwa;
+      selectZabieg.appendChild(option);
+    })
+  }
+
   let listaKlientow = [];
   let listaZabiegow = [];
+  let listaWizyt = [];
 
   const sekcje = ["menu_glowne","klienci","zabiegi","kalendarz","klient_szczegoly",
-  "zabieg_szczegoly","dodaj_klienta","dodaj_zabieg","ustawienia"]
+  "zabieg_szczegoly","dodaj_klienta","dodaj_zabieg","ustawienia","dodaj_wizyte","wizyta_szczegoly"]
 
   function przelaczStrone(strona) { 
     sekcje.forEach(sekcja => { 
