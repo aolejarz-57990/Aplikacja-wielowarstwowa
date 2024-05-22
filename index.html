@@ -73,6 +73,7 @@
         <td><span></span></td>
       </tr>
     </template>
+    
     <header>
       <h1 class="wysrodkuj">Aplikacja wielowarstwowa</h1>
     </header>
@@ -132,7 +133,25 @@
       </section>
 
       <section id="kalendarz" hidden>
-        <h2 class="wysrodkuj">KALENDARZ ZABIEGÓW</h2>
+        <h2 class="wysrodkuj"> KALENDARZ</h2>
+        <div class="srodek">
+          <table>
+            <thead>
+              <tr>
+              <th>Data</th>
+              <th>Klient</th>
+              <th>Zabieg</th>
+            </tr>
+            </thead>
+            <tbody>
+              
+            </tbody>
+          </table>
+          <span>
+            <button id="btn_dodaj_wizyta" type="button">Nowa wizyta</button>
+            <button id="btn_powrot_kalendarz" type="button">Powrót</button>
+          </span>
+        </div>
       </section>
 
       <section id="ustawienia" hidden>
@@ -235,6 +254,58 @@
             </span>
           </div>
         </form>
+      </section>
+
+      <section id="wizyta_szczegoly">
+        <div class="srodek">
+          <h2 class="wysrodkuj">Szczegóły</h2>
+          <span class="spread" >
+            <label for="wizyta_data">Data:</label>
+            <input id="wizyta_data" type="datetime-local">
+          </span>
+          <span class="spread" >
+            <label for="wizyta_klient">Klient:</label>
+            <select id="wizyta_klient">
+              <option value="0">Wybierz klienta</option>
+            </select>
+          </span>
+          <span class="spread" >
+            <label for="wizyta_zabieg">Zabieg:</label>
+            <select id="wizyta_zabieg">
+              <option value="0">Wybierz zabieg</option>
+            </select>
+          </span>
+          <div>
+            <button id="btn_zapisz_wizyta" type="button">Zapisz</button>
+            <button id="btn_usun_wizyta" type="button">Usuń</button>
+            <button id="btn_powrot_szczegoly_wizyta" type="button">Powrót</button>
+          </div>
+        </div>
+      </section>
+      <section id="dodaj_wizyta">
+        <div class="srodek">
+          <h2 class="wysrodkuj">Nowa wizyta</h2>
+          <span class="spread" >
+            <label for="nowa_wizyta_termin">Termin:</label>
+            <input id="nowa_wizyta_termin" type="datetime-local">
+          </span>
+          <span class="spread" >
+            <label for="nowa_wizyta_klient">Klient:</label>
+            <select id="nowa_wizyta_klient">
+              <option value="0">Wybierz klienta</option>
+            </select>
+          </span>
+          <span class="spread" >
+            <label for="nowa_wizyta_zabieg">Zabieg:</label>
+            <select id="nowa_wizyta_zabieg">
+              <option value="0">Wybierz zabieg</option>
+            </select>
+          </span>
+          <div>
+            <button id="btn_zapisz_nowa_wizyta" type="button">Zapisz</button>
+            <button id="btn_powrot_nowa_wizyta" type="button">Powrót</button>
+          </div>
+        </div>
       </section>
     </main>
     <footer class="wysrodkuj">
