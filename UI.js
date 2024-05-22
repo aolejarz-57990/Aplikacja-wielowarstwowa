@@ -145,23 +145,42 @@ function initializujStrone() {
     tworzListeZabiegow();
     przelaczStrone("dodaj_wizyte");
   });
-  document.querySelector("#btn_zapisz_wizyte").addEventListener("click",()=>{
+  document.querySelector("#btn_powrot_wizyty").addEventListener("click",()=>{
+    przelaczStrone("menu_glowne");
+  });
+  document.querySelector("#dodaj_wizyte form").addEventListener("submit", ev => {
+    ev.preventDefault();
+    ev.stopPropagation();
     const wizyta = {
       termin: document.querySelector("#nowa_wizyta_termin").value,
       idKlienta: document.querySelector("#nowa_wizyta_klient").value,
       idZabiegu: document.querySelector("#nowa_wizyta_zabieg").value
     }
+    document.querySelector("#btn_dodaj_wizyte_submit").hidden = true;
     dodajElement("zamowienia",wizyta,() => {
+      pobierzListeElementow("zamowienia", wizyty => {
+        listaWizyt = wizyty;
+        wypelnijListeWizyt();
       przelaczStrone("kalendarz");
+        }
+      );
     });
   });
   document.querySelector("#btn_powrot_nowa_wizyta").addEventListener("click",()=>{
-    przelaczStrone("kalnedarz");
+    przelaczStrone("kalendarz");
   });
   document.querySelector("#btn_powrot_szczegoly_wizyty").addEventListener("click",()=>{
     przelaczStrone("kalendarz");
   });
-
+  document.querySelector("btn_usun_wizyte").addEventListener("click",()=>{
+    if (confirm("Czy na pewno chcesz usunąć wizytę?")){
+      listaWizyt=listaWizyt.filter(wizyta=>wizyta._id!=aktualnaWizyta._id);
+      usunElement("zamowienia",aktualnaWizyta._id,() => {
+        wypelnijListeWizyt();
+        przelaczStrone("kalendarz");
+      });
+    }
+  });
 }
       
 function wypelnijListeKlientow() {
@@ -276,6 +295,10 @@ function wypelnijListeKlientow() {
   function idZabieguNaNazwe(idZabiegu) {
     const zabieg = listaZabiegow.find(zabieg => zabieg._id == idZabiegu);
     return zabieg.nazwa;
+  }
+
+  function formatujTermin(termin) {
+    return termin.substring(0,10) + " " + termin.substring(11,16);
   }
 
   let listaKlientow = [];
