@@ -148,8 +148,8 @@ function initializujStrone() {
   document.querySelector("#btn_zapisz_wizyte").addEventListener("click",()=>{
     const wizyta = {
       termin: document.querySelector("#nowa_wizyta_termin").value,
-      klient: document.querySelector("#nowa_wizyta_klient").value,
-      zabieg: document.querySelector("#nowa_wizyta_zabieg").value
+      idKlienta: document.querySelector("#nowa_wizyta_klient").value,
+      idZabiegu: document.querySelector("#nowa_wizyta_zabieg").value
     }
     dodajElement("zamowienia",wizyta,() => {
       przelaczStrone("kalendarz");
@@ -230,8 +230,8 @@ function wypelnijListeKlientow() {
         const wiersz = templateWiersz.cloneNode(true);
         const komorki = wiersz.querySelectorAll("td span");
         komorki[0].textContent = wizyta.termin;
-        komorki[1].textContent = wizyta.klient;
-        komorki[2].textContent = wizyta.zabieg;
+        komorki[1].textContent = idKlientaNaNazwe(wizyta.idKlienta);
+        komorki[2].textContent = idZabieguNaNazwe(wizyta.idZabiegu);
         tabelaWizyt.appendChild(wiersz);
       }
     )
@@ -266,6 +266,16 @@ function wypelnijListeKlientow() {
       option.textContent = zabieg.nazwa;
       selectZabieg.appendChild(option);
     })
+  }
+
+  function idKlientaNaNazwe(idKlienta) {
+    const klient = listaKlientow.find(klient => klient._id == idKlienta);
+    return klient.imie + " " + klient.nazwisko;
+  }
+
+  function idZabieguNaNazwe(idZabiegu) {
+    const zabieg = listaZabiegow.find(zabieg => zabieg._id == idZabiegu);
+    return zabieg.nazwa;
   }
 
   let listaKlientow = [];
