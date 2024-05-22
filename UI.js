@@ -173,7 +173,7 @@ function initializujStrone() {
   document.querySelector("#btn_powrot_szczegoly_wizyty").addEventListener("click",()=>{
     przelaczStrone("kalendarz");
   });
-  document.querySelector("btn_usun_wizyte").addEventListener("click",()=>{
+  document.querySelector("#btn_usun_wizyte").addEventListener("click",()=>{
     if (confirm("Czy na pewno chcesz usunąć wizytę?")){
       listaWizyt=listaWizyt.filter(wizyta=>wizyta._id!=aktualnaWizyta._id);
       usunElement("zamowienia",aktualnaWizyta._id,() => {
