@@ -11,6 +11,7 @@ function initializujStrone() {
   });
   document.querySelector("#btn_kalendarz").addEventListener("click",()=>{
       przelaczStrone("kalendarz")
+      wypelnijListeWizyt();
   });
   document.querySelector("#btn_ustawienia").addEventListener("click",()=>{
       przelaczStrone("ustawienia")
@@ -161,7 +162,7 @@ function initializujStrone() {
       pobierzListeElementow("zamowienia", wizyty => {
         listaWizyt = wizyty;
         wypelnijListeWizyt();
-      przelaczStrone("kalendarz");
+        przelaczStrone("kalendarz");
         }
       );
     });
@@ -248,9 +249,12 @@ function wypelnijListeKlientow() {
         const templateTR = templateWiersz.querySelector("tr");
         const wiersz = templateWiersz.cloneNode(true);
         const komorki = wiersz.querySelectorAll("td span");
-        komorki[0].textContent = wizyta.termin;
+        komorki[0].textContent = formatujTermin(wizyta.termin);
         komorki[1].textContent = idKlientaNaNazwe(wizyta.idKlienta);
         komorki[2].textContent = idZabieguNaNazwe(wizyta.idZabiegu);
+        wiersz.querySelector("tr").addEventListener("click", ev => {
+          wyswietlSzczegolyWizyty(wizyta);
+        });
         tabelaWizyt.appendChild(wiersz);
       }
     )
@@ -258,9 +262,9 @@ function wypelnijListeKlientow() {
 
   function wyswietlSzczegolyWizyty(wizyta) {
     aktualnaWizyta = wizyta;
-    document.querySelector("#wizyta_termin").value = wizyta.termin;
-    document.querySelector("#wizyta_klient").value = wizyta.klient;
-    document.querySelector("#wizyta_zabieg").value = wizyta.zabieg;
+    document.querySelector("#wizyta_termin").value = formatujTermin(wizyta.termin);
+    document.querySelector("#wizyta_klient").value = idKlientaNaNazwe(wizyta.idKlienta);
+    document.querySelector("#wizyta_zabieg").value = idZabieguNaNazwe(wizyta.idZabiegu);
     document.querySelector("#kalendarz").hidden = true;
     document.querySelector("#wizyta_szczegoly").hidden = false;
   }
