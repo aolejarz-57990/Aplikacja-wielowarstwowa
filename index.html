@@ -278,29 +278,31 @@
         </div>
       </section>
       <section id="dodaj_wizyte" hidden>
-        <div class="srodek">
-          <h2 class="wysrodkuj">Nowa wizyta</h2>
-          <span class="spread" >
-            <label for="nowa_wizyta_termin">Termin:</label>
-            <input id="nowa_wizyta_termin" type="datetime-local" required>
-          </span>
-          <span class="spread" >
-            <label for="nowa_wizyta_klient">Klient:</label>
-            <select id="nowa_wizyta_klient" required>
-              <option value="0">Wybierz klienta</option>
-            </select>
-          </span>
-          <span class="spread" >
-            <label for="nowa_wizyta_zabieg">Zabieg:</label>
-            <select id="nowa_wizyta_zabieg" required>
-              <option value="0">Wybierz zabieg</option>
-            </select>
-          </span>
-          <div>
-            <button id="btn_zapisz_wizyte" type="button">Zapisz</button>
-            <button id="btn_powrot_nowa_wizyta" type="button">Powrót</button>
+        <form>
+          <div class="srodek">
+            <h2 class="wysrodkuj">Nowa wizyta</h2>
+            <span class="spread" >
+              <label for="nowa_wizyta_termin">Termin:</label>
+              <input id="nowa_wizyta_termin" type="datetime-local" required>
+            </span>
+            <span class="spread" >
+              <label for="nowa_wizyta_klient">Klient:</label>
+              <select id="nowa_wizyta_klient" required>
+                <option value="0">Wybierz klienta</option>
+              </select>
+            </span>
+            <span class="spread" >
+              <label for="nowa_wizyta_zabieg">Zabieg:</label>
+              <select id="nowa_wizyta_zabieg" required>
+                <option value="0">Wybierz zabieg</option>
+              </select>
+            </span>
+            <div>
+              <button id="btn_dodaj_wizyte_submit" type="submit">Zapisz</button>
+              <button id="btn_powrot_nowa_wizyta" type="button">Powrót</button>
+            </div>
           </div>
-        </div>
+        </form>
       </section>
     </main>
     <footer class="wysrodkuj">
