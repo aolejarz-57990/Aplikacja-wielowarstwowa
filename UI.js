@@ -138,6 +138,29 @@ function initializujStrone() {
   document.querySelector("#btn_powrot_szczegoly_zabiegu").addEventListener("click",()=>{
     przelaczStrone("zabiegi");
   });
+  // Kalendarz
+  document.querySelector("#btn_dodaj_wizyte").addEventListener("click",()=>{
+    tworzListeKlientow();
+    tworzListeZabiegow();
+    przelaczStrone("dodaj_wizyte");
+  });
+  document.querySelector("#btn_zapisz_wizyte").addEventListener("click",()=>{
+    const wizyta = {
+      termin: document.querySelector("#nowa_wizyta_termin").value,
+      klient: document.querySelector("#nowa_wizyta_klient").value,
+      zabieg: document.querySelector("#nowa_wizyta_zabieg").value
+    }
+    dodajElement("zamowienia",wizyta,() => {
+      przelaczStrone("kalendarz");
+    });
+  });
+  document.querySelector("#btn_powrot_nowa_wizyta").addEventListener("click",()=>{
+    przelaczStrone("kalnedarz");
+  });
+  document.querySelector("#btn_powrot_szczegoly_wizyty").addEventListener("click",()=>{
+    przelaczStrone("kalendarz");
+  });
+
 }
       
 function wypelnijListeKlientow() {
