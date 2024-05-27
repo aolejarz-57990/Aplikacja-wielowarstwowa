@@ -24,7 +24,7 @@ async function nowyKlientTest() {
     // Przejdź do strony aplikacji
     await driver.get("https://aolejarz-57990.github.io");
     driver.findElement(By.id("btn_ustawienia")).click();
-    driver.findElement(By.id("haslo_do_DB")).sendKeys("Imbirek");
+    driver.findElement(By.id("haslo_do_DB")).sendKeys("Password123");
     driver.findElement(By.id("btn_powrot_ustawienia")).click();
     driver.findElement(By.id("btn_klienci")).click();
     driver.findElement(By.id("btn_dodaj_klienta")).click();
