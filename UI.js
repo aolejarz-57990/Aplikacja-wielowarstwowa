@@ -275,7 +275,7 @@ function wypelnijListeKlientow() {
     listaKlientow.forEach(klient => {
       const option = document.createElement("option");
       option.value = klient._id;
-      option.textContent = klient.imie + " " + klient.nazwisko;
+      option.textContent = klient.imie + " " + klient.nazwisko + ", tel: " + klient.tel;
       selectKlient.appendChild(option);
     })
   }
