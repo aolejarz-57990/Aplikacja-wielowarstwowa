@@ -1,5 +1,6 @@
 const { Builder, By, until } = require("selenium-webdriver");
 const assert = require("assert");
+
 async function stronaGlownaTest() {
     // Uruchomienie przeglądarki
     let driver = await new Builder().forBrowser("chrome").build();
@@ -22,21 +23,18 @@ async function nowyKlientTest() {
   try {
     // Przejdź do strony aplikacji
     await driver.get("https://aolejarz-57990.github.io");
-    // 
-    await driver.findElement(By.id("email")).sendKeys("test3@gmail.com");
-    await driver.findElement(By.id("password")).sendKeys("Password@12345");
-    // Select login button and invoke click action
-    //If login details are correct we wiil be redirected to the welcome page
-    await driver.findElement(By.name("login")).click();
-    //On succesful login get page title
-    //Check page title, to confirm login was successful
-    const pageTitle = await driver.getTitle();
-    // assert usign node assertion
-    assert.strictEqual(pageTitle, "Welcomepage");
-    //Check if redirect to login page was successfull
-    await driver.wait(until.titleIs("Welcomepage"), 4000);
+    driver.findElement(By.id("btn_ustawienia")).click();
+    driver.findElement(By.id("haslo_do_DB")).sendKeys("Imbirek");
+    driver.findElement(By.id("btn_powrot_ustawienia")).click();
+    driver.findElement(By.id("btn_klienci")).click();
+    driver.findElement(By.id("btn_dodaj_klienta")).click();
+    driver.findElement(By.id("nowy_klient_imie")).sendKeys("Jan");
+    driver.findElement(By.id("nowy_klient_nazwisko")).sendKeys("Kowalski");
+    driver.findElement(By.id("nowy_klient_tel")).sendKeys("111222333");
+    driver.findElement(By.id("dodaj_klienta_submit")).click();
   } finally {
-    await driver.quit();
+    //await driver.quit();
   }
 }
-stronaGlownaTest();
+//stronaGlownaTest();
+nowyKlientTest();
