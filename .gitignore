@@ -5,3 +5,7 @@ node_modules
 /blob-report/
 /playwright/.cache/
 playwright.config.js
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
