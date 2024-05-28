@@ -26,8 +26,7 @@ module.exports = defineConfig({
   use: {
     baseURL: "https://aplikacja-ac0d.restdb.io/rest/",
     extraHTTPHeaders: {
-      Authorization:
-        "Bearer 663507a7c60874c61ed323bf"
+      "x-apikey": "663507a7c60874c61ed323bf"
     },
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
