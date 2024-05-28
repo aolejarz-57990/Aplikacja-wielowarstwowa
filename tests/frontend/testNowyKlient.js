@@ -36,5 +36,4 @@ async function nowyKlientTest() {
     //await driver.quit();
   }
 }
-//stronaGlownaTest();
-nowyKlientTest();
+stronaGlownaTest();
