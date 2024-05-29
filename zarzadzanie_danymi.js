@@ -4,7 +4,7 @@ const encryptedAPIkey = "U2FsdGVkX18Ikhl8uGAj3j/+XdcYdUjGGbomZZUPR2BZyAPaVIXPGpN
 let passcode = "";
 let APIkey = "";
 const url = "https://aplikacja-ac0d.restdb.io/rest/";
-const settings = {
+const baseSettings = {
     "async": true,
     "crossDomain": true,
     "url": "",
@@ -18,12 +18,14 @@ const settings = {
 
 // Obsługa kolekcji
 function pobierzListeElementow(kolekcja, onSuccess) {
+    const settings = JSON.parse(JSON.stringify(baseSettings));
     settings.method = "GET";
     settings.url = url+kolekcja;
     helpers.request(settings, onSuccess);
 }
 
 function dodajElement(kolekcja, element, onSuccess) {
+    const settings = JSON.parse(JSON.stringify(baseSettings));
     settings.method = "POST";
     settings.url = url+kolekcja;
     settings.processData = false;
@@ -32,12 +34,14 @@ function dodajElement(kolekcja, element, onSuccess) {
 }
 
 function pobierzElement(kolekcja, elementId, onSuccess) {
+    const settings = JSON.parse(JSON.stringify(baseSettings));
     settings.method = "GET";
     settings.url = url+kolekcja+"/"+elementId;
     helpers.request(settings, onSuccess);
 }
 
 function aktualizujElement(kolekcja, element, onSuccess) {
+    const settings = JSON.parse(JSON.stringify(baseSettings));
     settings.method = "PUT";
     settings.url = url+kolekcja+"/"+element._id;
     settings.data = JSON.stringify(element);
@@ -45,7 +49,8 @@ function aktualizujElement(kolekcja, element, onSuccess) {
 }
 
 
-function usunElement(kolekcja, elementId,onSuccess) {
+function usunElement(kolekcja, elementId, onSuccess) {
+    const settings = JSON.parse(JSON.stringify(baseSettings));
     settings.method = "DELETE";
     settings.url = url+kolekcja+"/"+elementId;
     helpers.request(settings, onSuccess);
