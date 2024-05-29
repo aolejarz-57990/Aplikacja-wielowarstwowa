@@ -134,3 +134,17 @@ function decrypt(crypted, password) {
 function dodaj(a,b) {
     return a+b;
 }
+
+module.exports = {
+    dodaj,
+    pobierzListeElementow,
+    dodajElement,
+    pobierzElement,
+    aktualizujElement,
+    usunElement,
+    Klient,
+    Zabieg,
+    Zamowienia,
+    encrypt,
+    decrypt
+}
