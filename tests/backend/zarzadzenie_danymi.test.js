@@ -6,6 +6,16 @@ afterEach(() => {
     jest.restoreAllMocks();
   });
 
+const parameters = {
+    "async": true,
+    "crossDomain": true,
+    "headers": {
+    "cache-control": "no-cache",
+    "content-type": "application/json",
+    "x-apikey": ""
+    }
+}
+
 test('2+2 powinno dać 4', () => {
     expect(helpers.dodaj(2,2)).toBe(4);
   });
