@@ -1,5 +1,6 @@
 const zarzadzanie_danymi = require('../../zarzadzanie_danymi');
 const helpers = require('../../helpers');
+const { describe } = require('node:test');
 
 afterEach(() => {
     // restore the spy created with spyOn
@@ -16,49 +17,49 @@ const parameters = {
     }
 }
 
-test('2+2 powinno dać 4', () => {
-    expect(helpers.dodaj(2,2)).toBe(4);
-  });
-
-
-test('pobierz klientów', () => {
-    const spy = jest.spyOn(helpers, 'request').mockImplementation(() => {});
-    zarzadzanie_danymi.pobierzListeElementow('klienci');
-    expect(spy).toHaveBeenCalledTimes(1);
-   // expect(spy).toHaveBeenCalledWith({ url: 'https://aplikacja-ac0d.restdb.io/rest/klienci', method: 'GET' });
-    spy.mockRestore();
+describe('Przykładowy test', () => {
+    test('2+2 powinno dać 4', () => {
+        expect(helpers.dodaj(2,2)).toBe(4);
+    });
 });
 
-// test('dodaj klienta', () => {
-//     const spy = jest.spyOn(helpers, 'request').mockImplementation(() => {});
-//     const klient = {Imie: 'Jan', Nazwisko: 'Kowalski', Tel: '111222333'};
-//     zarzadzanie_danymi.dodajElement('klienci', klient);
-//     expect(spy).toHaveBeenCalledTimes(1);
-//     expect(spy).toHaveBeenCalledWith({ url: 'https://aplikacja-ac0d.restdb.io/rest/klienci', method: 'POST', data: JSON.stringify(klient) });
-//     spy.mockRestore();
-// });
 
-// test('pobierz klienta', () => {
-//     const spy = jest.spyOn(helpers, 'request').mockImplementation(() => {});
-//     zarzadzanie_danymi.pobierzElement('klienci', '123');
-//     expect(spy).toHaveBeenCalledTimes(1);
-//     expect(spy).toHaveBeenCalledWith({ url: 'https://aplikacja-ac0d.restdb.io/rest/klienci/123', method: 'GET' });
-//     spy.mockRestore();
-// });
+describe('Testy zarządzania danymi', () => {
 
-// test('aktualizuj klienta', () => {
-//     const spy = jest.spyOn(helpers, 'request').mockImplementation(() => {});
-//     const klient = {Imie: 'Jan', Nazwisko: 'Kowalski', Tel: '111222333'};
-//     zarzadzanie_danymi.aktualizujElement('klienci', klient);
-//     expect(spy).toHaveBeenCalledTimes(1);
-//     expect(spy).toHaveBeenCalledWith({ url: 'https://aplikacja-ac0d.restdb.io/rest/klienci/undefined', method: 'PUT', data: JSON.stringify(klient) });
-//     spy.mockRestore();
-// });
+    test('pobierz klientów', () => {
+        const spy = jest.spyOn(helpers, 'request').mockImplementation(() => {});
+        zarzadzanie_danymi.pobierzListeElementow('klienci');
+        expect(spy).toHaveBeenCalledTimes(1);
+        expect(spy).toHaveBeenCalledWith({...parameters ,url: 'https://aplikacja-ac0d.restdb.io/rest/klienci', method: 'GET' }, undefined);
+    });
 
-// test('usuń klienta', () => {
-//     const spy = jest.spyOn(helpers, 'request').mockImplementation(() => {});
-//     zarzadzanie_danymi.usunElement('klienci', '123');
-//     expect(spy).toHaveBeenCalledTimes(1);
-//     expect(spy).toHaveBeenCalledWith({ url: 'https://aplikacja-ac0d.restdb.io/rest/klienci/123', method: 'DELETE' });
-//     spy.mockRestore();
-// });
+    test('dodaj klienta', () => {
+        const spy = jest.spyOn(helpers, 'request').mockImplementation(() => {});
+        const klient = {Imie: 'Jan', Nazwisko: 'Kowalski', Tel: '111222333'};
+        zarzadzanie_danymi.dodajElement('klienci', klient);
+        expect(spy).toHaveBeenCalledTimes(1);
+        expect(spy).toHaveBeenCalledWith({...parameters, url: 'https://aplikacja-ac0d.restdb.io/rest/klienci', method: 'POST', processData: false, data: JSON.stringify(klient) }, undefined);
+    });
+
+    test('pobierz klienta', () => {
+        const spy = jest.spyOn(helpers, 'request').mockImplementation(() => {});
+        zarzadzanie_danymi.pobierzElement('klienci', '123');
+        expect(spy).toHaveBeenCalledTimes(1);
+        expect(spy).toHaveBeenCalledWith({...parameters, url: 'https://aplikacja-ac0d.restdb.io/rest/klienci/123', method: 'GET' }, undefined);
+    });
+
+    test('aktualizuj klienta', () => {
+        const spy = jest.spyOn(helpers, 'request').mockImplementation(() => {});
+        const klient = {Imie: 'Jan', Nazwisko: 'Kowalski', Tel: '111222333'};
+        zarzadzanie_danymi.aktualizujElement('klienci', klient);
+        expect(spy).toHaveBeenCalledTimes(1);
+        expect(spy).toHaveBeenCalledWith({...parameters, url: 'https://aplikacja-ac0d.restdb.io/rest/klienci/undefined', method: 'PUT', data: JSON.stringify(klient) }, undefined);
+    });
+
+    test('usuń klienta', () => {
+        const spy = jest.spyOn(helpers, 'request').mockImplementation(() => {});
+        zarzadzanie_danymi.usunElement('klienci', '123');
+        expect(spy).toHaveBeenCalledTimes(1);
+        expect(spy).toHaveBeenCalledWith({...parameters, url: 'https://aplikacja-ac0d.restdb.io/rest/klienci/123', method: 'DELETE' }, undefined);
+    });
+});
