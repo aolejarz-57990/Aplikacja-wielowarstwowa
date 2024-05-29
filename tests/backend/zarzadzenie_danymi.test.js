@@ -24,7 +24,7 @@ describe('Przykładowy test', () => {
 });
 
 
-describe('Testy zarządzania danymi', () => {
+describe('Testy zarządzania klientami', () => {
 
     test('pobierz klientów', () => {
         const spy = jest.spyOn(helpers, 'request').mockImplementation(() => {});
