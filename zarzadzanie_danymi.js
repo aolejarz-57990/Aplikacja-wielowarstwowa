@@ -1,3 +1,4 @@
+const helpers = require('./helpers.js');
 //Uzyskanie dostepu do bazy danych
 const encryptedAPIkey = "U2FsdGVkX18Ikhl8uGAj3j/+XdcYdUjGGbomZZUPR2BZyAPaVIXPGpNJFlr+OPjxiwWvRlQ6wnnlqqUXMtXN4w==";
 let passcode = "";
@@ -19,7 +20,7 @@ const settings = {
 function pobierzListeElementow(kolekcja, onSuccess) {
     settings.method = "GET";
     settings.url = url+kolekcja;
-    request(settings, onSuccess);
+    helpers.request(settings, onSuccess);
 }
 
 function dodajElement(kolekcja, element, onSuccess) {
@@ -27,27 +28,27 @@ function dodajElement(kolekcja, element, onSuccess) {
     settings.url = url+kolekcja;
     settings.processData = false;
     settings.data = JSON.stringify(element);
-    request(settings, onSuccess);
+    helpers.request(settings, onSuccess);
 }
 
 function pobierzElement(kolekcja, elementId, onSuccess) {
     settings.method = "GET";
     settings.url = url+kolekcja+"/"+elementId;
-    request(settings, onSuccess);
+    helpers.request(settings, onSuccess);
 }
 
 function aktualizujElement(kolekcja, element, onSuccess) {
     settings.method = "PUT";
     settings.url = url+kolekcja+"/"+element._id;
     settings.data = JSON.stringify(element);
-    request(settings, onSuccess);
+    helpers.request(settings, onSuccess);
 }
 
 
 function usunElement(kolekcja, elementId,onSuccess) {
     settings.method = "DELETE";
     settings.url = url+kolekcja+"/"+elementId;
-    request(settings, onSuccess);
+    helpers.request(settings, onSuccess);
 }
 
 // Klasy do obsługi danych
@@ -73,42 +74,10 @@ class Zamowienia {
     Termin = "";
 }
 
-function encrypt(content, password) { 
-    return CryptoJS.AES.encrypt(JSON.stringify({ content }), password).toString();
-}
-
-function decrypt(crypted, password) {
-    try {
-        return JSON.parse(CryptoJS.AES.decrypt(crypted, password).toString(CryptoJS.enc.Utf8)).content;
-    }
-    catch(e) {
-        return "";
-    }
-}
-
-function request(settings, onSuccess) {
-    try {
-        $.ajax(settings).done( response => {
-            if(typeof(onSuccess)=="function") {
-                onSuccess(response);
-            }
-        });
-    }
-    catch(e) {
-        console.log(e);
-    }
-}
-
-function dodaj(a,b) {
-    return a+b;
-}
-
 module.exports = {
-    dodaj,
     pobierzListeElementow,
     dodajElement,
     pobierzElement,
     aktualizujElement,
     usunElement,
-    request
 }
