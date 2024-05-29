@@ -130,3 +130,7 @@ function decrypt(crypted, password) {
         return "";
     }
 }
+
+function dodaj(a,b) {
+    return a+b;
+}
