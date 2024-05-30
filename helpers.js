@@ -28,9 +28,9 @@ function dodaj(a,b) {
     return a+b;
 }
 
-module.exports = {
-    encrypt,
-    decrypt,
-    request,
-    dodaj
-};
+// module.exports = {
+//     encrypt,
+//     decrypt,
+//     request,
+//     dodaj
+// };

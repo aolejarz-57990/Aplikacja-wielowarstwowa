@@ -19,7 +19,7 @@ function initializujStrone() {
   document.querySelector("#btn_powrot_ustawienia").addEventListener("click",()=>{
     passcode = document.querySelector("#haslo_do_DB").value;
     APIkey = decrypt(encryptedAPIkey,passcode);
-    settings.headers["x-apikey"] = APIkey;
+    baseSettings.headers["x-apikey"] = APIkey;
     pobierzListeElementow("klienci", klienci => listaKlientow = klienci);
     pobierzListeElementow("zabiegi", zabiegi => listaZabiegow = zabiegi);
     pobierzListeElementow("zamowienia", wizyty => listaWizyt = wizyty);
