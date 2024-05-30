@@ -23,17 +23,25 @@ async function nowyKlientTest() {
   try {
     // Przejdź do strony aplikacji
     await driver.get("https://aolejarz-57990.github.io");
-    driver.findElement(By.id("btn_ustawienia")).click();
-    driver.findElement(By.id("haslo_do_DB")).sendKeys("Password123");
-    driver.findElement(By.id("btn_powrot_ustawienia")).click();
-    driver.findElement(By.id("btn_klienci")).click();
-    driver.findElement(By.id("btn_dodaj_klienta")).click();
-    driver.findElement(By.id("nowy_klient_imie")).sendKeys("Jan");
-    driver.findElement(By.id("nowy_klient_nazwisko")).sendKeys("Kowalski");
-    driver.findElement(By.id("nowy_klient_tel")).sendKeys("111222333");
-    driver.findElement(By.id("dodaj_klienta_submit")).click();
+    const nowyKlientBtn = await driver.findElement(By.id("btn_dodaj_klienta"));
+    await driver.findElement(By.id("btn_klienci")).click();
+    await driver.wait(until.elementIsVisible(nowyKlientBtn), 5000);
+    await driver.findElement(By.id("btn_dodaj_klienta")).click();
+    await driver.findElement(By.id("nowy_klient_imie")).sendKeys("Jan");
+    await driver.findElement(By.id("nowy_klient_nazwisko")).sendKeys("Olejarz");
+    await driver.findElement(By.id("nowy_klient_tel")).sendKeys("111222333");
+    await sleep(30000);
+    await driver.findElement(By.id("dodaj_klienta_submit")).click();
+   
+    await driver.wait(until.elementIsVisible(nowyKlientBtn), 20000);
   } finally {
-    //await driver.quit();
+    await driver.quit();
   }
 }
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 stronaGlownaTest();
+nowyKlientTest();

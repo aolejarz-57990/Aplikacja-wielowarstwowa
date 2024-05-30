@@ -2,16 +2,25 @@ function initializujStrone() {
   // podpięcie handlerów do eventów
   // Menu główne
   document.querySelector("#btn_klienci").addEventListener("click",()=>{
+      pobierzListeElementow("klienci", klienci => {
+      listaKlientow = klienci;
       wypelnijListeKlientow();
       przelaczStrone("klienci");
+      });
   });
   document.querySelector("#btn_zabiegi").addEventListener("click",()=>{
-      przelaczStrone("zabiegi");
+    pobierzListeElementow("zabiegi", zabiegi => {
+      listaZabiegow = zabiegi;
       wypelnijListeZabiegow();
+      przelaczStrone("zabiegi");
+    });
   });
   document.querySelector("#btn_kalendarz").addEventListener("click",()=>{
+    pobierzListeElementow("zamowienia", wizyty => {
+      listaWizyt = wizyty;
       przelaczStrone("kalendarz")
       wypelnijListeWizyt();
+    });
   });
   document.querySelector("#btn_ustawienia").addEventListener("click",()=>{
       przelaczStrone("ustawienia")
