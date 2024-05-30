@@ -26,14 +26,14 @@ async function nowyKlientTest() {
     const nowyKlientBtn = await driver.findElement(By.id("btn_dodaj_klienta"));
     await driver.findElement(By.id("btn_klienci")).click();
     await driver.wait(until.elementIsVisible(nowyKlientBtn), 5000);
+    await sleep(2000);
     await driver.findElement(By.id("btn_dodaj_klienta")).click();
     await driver.findElement(By.id("nowy_klient_imie")).sendKeys("Jan");
-    await driver.findElement(By.id("nowy_klient_nazwisko")).sendKeys("Olejarz");
-    await driver.findElement(By.id("nowy_klient_tel")).sendKeys("111222333");
-    await sleep(30000);
+    await driver.findElement(By.id("nowy_klient_nazwisko")).sendKeys("Kowalski");
+    await driver.findElement(By.id("nowy_klient_tel")).sendKeys("123456ABC");
     await driver.findElement(By.id("dodaj_klienta_submit")).click();
-   
     await driver.wait(until.elementIsVisible(nowyKlientBtn), 20000);
+    await sleep(2000);
   } finally {
     await driver.quit();
   }
