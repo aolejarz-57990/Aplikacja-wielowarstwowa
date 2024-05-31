@@ -272,7 +272,7 @@ function wypelnijListeKlientow() {
   function wyswietlSzczegolyWizyty(wizyta) {
     aktualnaWizyta = wizyta;
     document.querySelector("#wizyta_termin").value = formatujTermin(wizyta.termin);
-    document.querySelector("#wizyta_klient").value = idKlientaNaNazwe(wizyta.idKlienta);
+    document.querySelector("#wizyta_klient").value = idKlientaNaNazwe(wizyta.idKlienta) + ", tel: " + idKlientaNaTelefon(wizyta.idKlienta);
     document.querySelector("#wizyta_zabieg").value = idZabieguNaNazwe(wizyta.idZabiegu);
     document.querySelector("#kalendarz").hidden = true;
     document.querySelector("#wizyta_szczegoly").hidden = false;
@@ -318,6 +318,11 @@ function wypelnijListeKlientow() {
   function idKlientaNaNazwe(idKlienta) {
     const klient = listaKlientow.find(klient => klient._id == idKlienta);
     return klient.imie + " " + klient.nazwisko;
+  }
+
+  function idKlientaNaTelefon(idKlienta) {
+    const klient = listaKlientow.find(klient => klient._id == idKlienta);
+    return klient.tel;
   }
 
   function idZabieguNaNazwe(idZabiegu) {
