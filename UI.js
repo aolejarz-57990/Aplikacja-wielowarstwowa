@@ -300,6 +300,21 @@ function wypelnijListeKlientow() {
     })
   }
 
+  pobierzListeKlientow = () => {
+    pobierzListeElementow("klienci", klienci => {listaKlientow = klienci; }
+    );
+  }
+
+  pobierzListeZabiegow = () => {
+    pobierzListeElementow("zabiegi", zabiegi => {listaZabiegow = zabiegi; }
+    );
+  }
+
+  pobierzListeWizyt = () => {
+    pobierzListeElementow("zamowienia", wizyty => {listaWizyt = wizyty; }
+    );
+  }
+  
   function idKlientaNaNazwe(idKlienta) {
     const klient = listaKlientow.find(klient => klient._id == idKlienta);
     return klient.imie + " " + klient.nazwisko;
