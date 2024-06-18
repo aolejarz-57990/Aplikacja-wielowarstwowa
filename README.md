@@ -8,8 +8,8 @@ Jej funkcje obejmować będą:
 - wprowadzanie zabiegów na listę,
 - edycję danych zabiegów,
 - usuwanie zapisanych zabiegów,
-- rejestrację wizyty klientów w salonie.
-- 
+- rejestrację wizyty klientów w salonie,
+- usuwanie umówionej wizyty.
 ##  Uruchomienie  aplikacji  
 Hostingiem  aplikacji  zajmuje  się  Github  Pages  i  jest  dostępna  pod  adresem:  
 https://aolejarz-57990.github.io 
